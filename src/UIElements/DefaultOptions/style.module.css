@@ -1,0 +1,11 @@
+.main{
+    width: 250px;
+    min-height: 250px;
+    background-color: #d9db4d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+
+}

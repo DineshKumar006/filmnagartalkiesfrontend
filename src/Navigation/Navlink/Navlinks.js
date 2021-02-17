@@ -5,15 +5,31 @@ import Style from "./Navlink.module.css";
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'; 
 import CinemaOptions from './CinemaOptions/CinemaOptions';
 import GallaryOptions from './GalleryOptions/GallaryOptions';
+import NewsOptions from './NewsOptions/NewsOptions';
+import LatestReleaseOptions from './LatestRelease/LatestRelease';
+
 const  NavlinksComponent =()=>  {
     const [openOptions,setOpenOptions]=useState(false)
         return (
             <div className={Style.NavlinkHead}>
                 <MainNavbar>
 
-              
+                <div className={Style.navlinksElement}>
+
                <NavLink to='/' activeClassName={Style.active} exact={true}> Home  </NavLink>
-               <NavLink to='/News' activeClassName={Style.active} exact={true}> News  </NavLink>
+
+               {/* <NavLink to='/News' activeClassName={Style.active} exact={true}> News  </NavLink> */}
+
+               <span className={Style.optionStyle}>
+                            News    
+                        <ArrowDropDownIcon style={{fontSize:15}}/>
+
+                        <div className={Style.inneroptionStyle}>
+                           <NewsOptions/>
+                        </div>
+                </span>
+
+
                
                    
 
@@ -26,9 +42,11 @@ const  NavlinksComponent =()=>  {
                         <ArrowDropDownIcon style={{fontSize:15}}/>
 
                         <div className={Style.cinemaOptions}>
-                           <CinemaOptions/>
+                           <LatestReleaseOptions/>
                         </div>
                    </span>
+
+
                <span className={Style.gallary}>
                           Gallary    
                         <ArrowDropDownIcon style={{fontSize:15}}/>
@@ -41,7 +59,12 @@ const  NavlinksComponent =()=>  {
 
 
 
+               </div>
 
+
+              <div className={Style.searchBar}>
+                  <input type="text" placeholder="Search Your Like" />
+              </div>
                </MainNavbar>
             </div>
         )

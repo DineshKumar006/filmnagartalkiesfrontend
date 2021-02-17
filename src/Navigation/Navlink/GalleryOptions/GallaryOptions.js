@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const GallaryOptions =()=> {
     
         return (
-            <div>
+            <div className={Style.head}>
                 <DefaultOptions>
                     
                     <NavLink to='/Photoshoots' exact={true} activeClassName={Style.active}> Photoshoots  </NavLink>

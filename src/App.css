@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  position: relative;
+
+}
+
+.footer{
+  position: relative;
+  width: 100%;
+  bottom:0
 }
 
 .App-logo {

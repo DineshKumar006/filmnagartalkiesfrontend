@@ -1,0 +1,145 @@
+.contactusheader{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    align-items: center;
+    height: 300px;
+    flex-wrap: wrap;
+
+}
+.contactusheader .followus,.logo,.aboutus{
+    /* border: 1px solid red; */
+    flex-wrap: wrap;
+
+    width: 33.3%;
+    min-height: 80%;
+    margin: 0;
+    overflow: hidden;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactusheader .followus{
+    box-sizing: border-box;
+    flex-wrap: wrap;
+
+    padding: 0;
+    list-style: none;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.title{
+    font-weight:600;
+letter-spacing: 1px;
+font-size: larger;
+box-sizing: border-box;
+}
+
+.contactus span{
+    font-style: italic;
+    letter-spacing: 1px;
+    color: orange;
+    font-size: 15px;
+}
+.contactusheader .followus .followuslogo{
+    
+    /* border: 1px solid red; */
+    margin-top: 20px;
+    flex-wrap: wrap;
+    height: 50%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
+
+}
+
+.contactusheader .followus .followuslogo li:hover{
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.contactusheader .logo{
+    flex-direction: column;
+
+}
+.contactusheader .logo p{
+    margin-top: 10px;
+   padding: 0;
+    /* border: 1px solid red; */
+    width: 52%;
+
+    text-align: start;
+}
+.contactusheader .logo .span1{
+  font-size: larger;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family:cursive;
+  /* color: rgb(25, 179, 112); */
+  color: white;
+  /* box-shadow: 0px 0px 5px 0px orangered; */
+  text-shadow: 1px 1px 10px white;
+  
+
+}
+
+.contactusheader .logo .span2{
+    letter-spacing: 1px;
+    font-family:cursive;
+    /* color: red; */
+    color: white;
+    text-shadow: 1px 1px 10px white;
+
+
+}
+.contactusheader .logo .logoinner{
+    /* border: 1px solid green; */
+    width: 240px;
+    height: 140px;
+    overflow: hidden;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    /* background-color: orange; */
+    box-shadow: 0px 0px 15px 0px orange;
+    
+
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    /* flex-wrap: wrap; */
+
+ 
+}
+.contactusheader .logo .logoinner img{
+    width: 150px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    transform: scale(1.5);
+}
+
+.contactusheader .aboutus .aboutusPara{
+    /* border: 1px solid red; */
+    font-family: cursive;
+
+    /* min-height: 180px; */
+}
+.contactusheader .aboutus{
+    /* border: 1px solid green; */
+    justify-content: space-between;
+    align-items: center;
+}
+

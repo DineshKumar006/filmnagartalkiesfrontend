@@ -110,8 +110,10 @@ p{
 }
 .eleHeadinner{
     /* border: 1px solid green; */
+    /* margin-top: ; */
     width: 400px;
     height: 300px;
+    margin-top: 5px;
     
 }
 .innercontent{

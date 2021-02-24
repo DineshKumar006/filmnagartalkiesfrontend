@@ -1,0 +1,80 @@
+.head{
+    min-height: 100vh;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.head .left{
+    /* border: 1px solid green; */
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+.head p{
+    margin:0;
+    padding: 0;
+}
+
+.head .right{
+background-color: orange;
+width: 30%;
+}
+.leftheadInner{
+    margin-top: 10px;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 700px;
+}
+.leftheadInner .title{
+    padding: 0;
+    font-size: 25px;
+    font-weight: 700;
+    
+
+}
+
+.leftheadInner .image{
+    /* border: 1px solid green; */
+    width: 100%;
+    overflow: hidden;
+}
+
+.leftheadInner .image img{
+    width: 90%;
+}
+
+.leftheadInner .description {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+
+}
+.leftheadInner .description p {
+ /* display: flex; */
+ /* align-items: center; */
+    text-align: left;
+
+}
+.leftheadInner .description p .span1{
+    font-size:40px;
+    font-weight: 700;
+    /* border: 1px solid red; */
+    /* padding-top: 10px; */
+}
+.leftheadInner .description  p .span2{
+    font-size: 18px;
+    font-weight: 600;
+        /* font-style: italic; */
+
+}
+/* .title p  span{
+    
+    font-size: 25px;
+    font-weight: 700;
+    
+} */

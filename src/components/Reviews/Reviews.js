@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Style from './Review.module.css';
 import axios from 'axios';
 import img1 from '../../#images/r1.jpeg'
-const Reviews =()=> {
+import {useDispatch} from 'react-redux'
+import { ReviewDetail } from '../../ReduxStore/Actions/ReviewDetailsActions';
+import Backdrop from '../../UIElements/backdrop/Backdrop';
+const Reviews =(props)=> {
+    const dispatch=useDispatch()
     const [reviewData,setReviewData]=useState([])
     let tt='Uppena Telugu Movie Review : Vaisshnav Tej Stars In This Love Story And A Tale Of Class Struggle'
     useEffect(() => {
@@ -20,6 +24,19 @@ const Reviews =()=> {
         fetch();
 
     }, [])
+
+    const onImageClickHandler=(id,data)=>{
+        // console.log(data)
+        dispatch(ReviewDetail(data))
+
+   props.history.push({
+       pathname:`/ReviewDetail/${id}`,
+       id:id
+
+           })
+
+   
+    }
         return (
             <div className={`container ${Style.Head}`}>
 
@@ -48,7 +65,7 @@ const Reviews =()=> {
                             {reviewData.map(ele=>{
                                 return <div key={ele._id} className={Style.eleHeadinner}>
                                         
-                                                    <div className={Style.innercontent}>
+                                                    <div className={Style.innercontent} onClick={()=>onImageClickHandler(ele._id,ele)}>
                                                         <img src={ele.thumbnail} width="320px" height="200px" className={Style.img}/>
 
                                                         <p>{ele.title}</p>
@@ -58,7 +75,13 @@ const Reviews =()=> {
 
                                     </div>
                             })}
-                            </div>:<div>Loading</div>
+                            </div>:<div className={` ${Style.eleHead}`}>
+                            <div  className={Style.eleHeadinner}><Backdrop/></div>
+                            <div  className={Style.eleHeadinner}><Backdrop/></div>
+                            <div  className={Style.eleHeadinner}><Backdrop/></div>
+                            <div  className={Style.eleHeadinner}><Backdrop/></div>
+
+                            </div>
 
                             }
                     </div>

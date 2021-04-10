@@ -8,9 +8,9 @@ import {DotLoader} from "react-spinners";
 const override = css`
   display: block;
   margin: 0 auto;
-  border-color: red;
 `;
 
+// border-color: red;
 
 const Backdrop =()=> {
         return (
@@ -19,7 +19,6 @@ const Backdrop =()=> {
                 <DotLoader color={'orangered'} loading={true} css={override} size={50} />
 
                 </div>
-
 
                 <span className={Style.span1}></span>
 

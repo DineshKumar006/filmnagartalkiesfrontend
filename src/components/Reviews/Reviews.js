@@ -11,6 +11,8 @@ const Reviews =(props)=> {
     let tt='Uppena Telugu Movie Review : Vaisshnav Tej Stars In This Love Story And A Tale Of Class Struggle'
     useEffect(() => {
         
+        if(reviewData.length===0){
+        
         const fetch=async()=>{
            try {
                const response=await axios.get('https://filmnagartalkies-backendv2.herokuapp.com/api/fnt/getAllReview')
@@ -22,6 +24,7 @@ const Reviews =(props)=> {
         }
 
         fetch();
+    }
 
     }, [])
 

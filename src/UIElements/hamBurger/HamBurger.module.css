@@ -1,0 +1,98 @@
+.main{
+    width: 50px;
+    /* border: 1px solid red; */
+    height: 40px;
+}
+
+.main .icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px honeydew;
+}
+
+.main .menuMain{
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    z-index: 20;
+    left: 0;
+    top: 0;
+    /* background-color: rgb(255, 243, 245); */
+    background-color: yellow;
+    box-shadow: 0px 0px 10px 5px white;
+    /* background-color: rgb(167, 166, 166); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-evenly; */
+
+    /* transition-duration: 5s; */
+
+
+}
+
+.main .closeicon{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50px;
+    padding-right: 10px;
+}
+.main .navEle{
+    height: 70%;
+
+    display: flex;
+    flex-direction: column;
+justify-content: space-evenly;
+align-items: flex-start;
+border:1px solid green;
+min-width: 50%;
+
+}
+
+.main .navEle .innerNavEle{
+    font-size: 18px;
+
+    font-weight: normal;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+    color: black;
+    /* min-width: 30%; */
+    letter-spacing: 1px
+}
+
+.main .navEle .innerNavEle a{
+    font-weight: normal;
+    font-size: 18px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    /* width: 100%; */
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    color: black;
+    letter-spacing: 1px
+ 
+}
+
+.main .navEle .innerNavEle a.active2{
+
+background-color: transparent;
+border-bottom: 1px solid skyblue;
+
+color: green;
+align-items: center;
+
+}

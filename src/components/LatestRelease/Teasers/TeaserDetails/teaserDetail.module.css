@@ -1,0 +1,84 @@
+.head{
+    min-height: 100vh;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.head .left{
+    /* border: 1px solid green; */
+    width: 70%;
+    /* min-height: 200px; */
+    display: flex;
+    flex-direction: column;
+}
+.head p{
+    margin:0;
+    padding: 0;
+}
+
+.head .right{
+background-color: black;
+width: 25%;
+}
+.head .leftheadInner{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+.head .innercontent{
+    /* border: 1px solid red; */
+
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+.head .leftheadInner .title{
+    padding: 0;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    height: 10%;
+
+
+}
+
+.leftheadInner .image{
+    /* border: 1px solid green; */
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
+}
+
+.leftheadInner .image img{
+    width: 100%;
+    height: 100%;
+}
+
+.leftheadInner .video{
+ /* border: 1px solid red; */
+ margin-top: 20px;
+ display: flex;
+ justify-content: space-evenly;
+ flex-direction: column;
+ align-items: center;
+ height: 500px ;
+
+}
+.leftheadInner  .video button{
+    width: 100%;
+    padding: 10px 0px;
+    border: none;
+    outline: none;
+    background-color: red;
+    color: white;
+    letter-spacing: 2px;
+}

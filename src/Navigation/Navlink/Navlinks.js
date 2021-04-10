@@ -7,24 +7,34 @@ import CinemaOptions from './CinemaOptions/CinemaOptions';
 import GallaryOptions from './GalleryOptions/GallaryOptions';
 import NewsOptions from './NewsOptions/NewsOptions';
 import LatestReleaseOptions from './LatestRelease/LatestRelease';
-
+import HamBurger from '../../UIElements/hamBurger/HamBurger'
+import {red,grey} from '@material-ui/core/colors'
 const  NavlinksComponent =()=>  {
     const [openOptions,setOpenOptions]=useState(false)
         return (
-            <div className={Style.NavlinkHead}>
+            <div className={` ${Style.NavlinkHead}`}>
+
+
+
+                <div className={Style.HamBurger}>
+                    <HamBurger/>
+                </div>
+
+       <div className={` ${Style.navlinksElement}`}>
+
                 <MainNavbar>
-
-                <div className={Style.navlinksElement}>
-
                <NavLink to='/' activeClassName={Style.active} exact={true}> Home  </NavLink>
 
-               {/* <NavLink to='/News' activeClassName={Style.active} exact={true}> News  </NavLink> */}
 
                <span className={Style.optionStyle}>
                             News    
                         <ArrowDropDownIcon style={{fontSize:15}}/>
 
+
                         <div className={Style.inneroptionStyle}>
+
+                        <p className={Style.dropdonwArrow}> <ArrowDropDownIcon style={{fontSize:30,color:grey[900]}}/></p>
+
                            <NewsOptions/>
                         </div>
                 </span>
@@ -42,16 +52,20 @@ const  NavlinksComponent =()=>  {
                         <ArrowDropDownIcon style={{fontSize:15}}/>
 
                         <div className={Style.cinemaOptions}>
+                        <p className={Style.dropdonwArrow}> <ArrowDropDownIcon style={{fontSize:30,color:grey[900]}}/></p>
+
                            <LatestReleaseOptions/>
                         </div>
                    </span>
 
 
                <span className={Style.gallary}>
-                          Gallary    
+                          Gallery    
                         <ArrowDropDownIcon style={{fontSize:15}}/>
 
                         <div className={Style.gallaryOptions}>
+                        <p className={Style.dropdonwArrow}> <ArrowDropDownIcon style={{fontSize:30,color:grey[900]}}/></p>
+
                            <GallaryOptions/>
                         </div>
                    </span>
@@ -59,13 +73,13 @@ const  NavlinksComponent =()=>  {
 
 
 
+              
+               </MainNavbar>
                </div>
 
-
-              <div className={Style.searchBar}>
-                  <input type="text" placeholder="Search Your Like" />
+               <div className={` ${Style.searchBar}`}>
+                  <input type="text" placeholder="Search Your Like"  className={'container'}/>
               </div>
-               </MainNavbar>
             </div>
         )
     

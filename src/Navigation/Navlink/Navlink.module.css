@@ -1,9 +1,32 @@
+
+.NavlinkHead{
+    /* border: 1px solid green; */
+    /* border-bottom: 1px solid gray; */
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: rgb(167, 166, 166); */
+    background-color: white;
+    height: 70px;
+    
+
+}
+
+
+.HamBurger{
+    display: none;
+}
+
 .NavlinkHead a,.NavlinkHead span{
     color: black;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     letter-spacing: 1px;
+    font-family: RobotoCondensed-Bold;
+
+
+
     /* border: 1px solid red; */
-    min-width: 100px;
+    min-width: 100px; 
     text-decoration: none;
     cursor: pointer;
 
@@ -36,24 +59,54 @@
 .NavlinkHead .optionStyle{
     position: relative;
     /* border: 1px solid red; */
+    font-family: RobotoCondensed-Bold;
 }
 
 .NavlinkHead .optionStyle .inneroptionStyle{
+    /* border: 1px solid red; */
     position: absolute;
     top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
     display: none;
 }
 
 .NavlinkHead .optionStyle:hover .inneroptionStyle{
-    display: block;
+    display:block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
     z-index: 5;
+   /* padding-top: 10px; */
+/* border: 1px solid green; */
+/* background-color: white; */
 }
+.dropdonwArrow{
+/* border: 1px solid green;    */
+height: 22px;
+display: flex;
+justify-content: center;
+align-items: flex-start;
+width: 100%;
+margin:0;
+padding: 0;
+/* position: absolute;
+top: -10;
+z-index: 10
+     */
+}
+
 
 
 
 
 .NavlinkHead .gallary{
     position: relative;
+    font-family: RobotoCondensed-Bold;
+
     /* border: 1px solid red; */
 }
 
@@ -69,41 +122,89 @@
 
 }
 
+
 .NavlinkHead a.active{
+    border-radius: 5px;
+    background-color: rgb(253, 255, 108);
+  }
+/* .NavlinkHead a.active{
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px yellow;
+    box-shadow: 0px 0px 10px 0px black;
+    color: green;
+
+
+}
+.NavlinkHead a{
+    border: 1px solid pink;
 }
 
 .NavlinkHead a:hover ,.NavlinkHead span:hover{
     background-color: white;
+    border: 1px solid green;
     border-radius: 5px;
 
-}
+} */
 
 .navlinksElement{
-    /* border: 1px solid red; */
+    border-bottom: 1px solid orangered;
     width: 70%;
+    height: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+
+@font-face{
+  
+    font-family: RobotoCondensed-Bold;
+    src: url(../../UIElements/Fonts/roboto-condensed/RobotoCondensed-Bold.ttf);
+}
+
+
 .searchBar{
     /* border: 1px solid green; */
     width: 20%;
-    height:60%;
+    height:50%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+
 .searchBar input{
 border: none;
 width: 100%;
 height: 100%;
-border-radius: 20px;
-padding: 0px 20px;
+/* border-radius: 20px; */
+/* padding: 0px 20px; */
+/* text-align: center; */
 outline: none;
-box-shadow: 0px 0px 10px 0px yellow;
 
+background-color: white;
+color: white;
+border-bottom: 1px solid orangered;
+/* box-shadow: 0px -1px 10px 0px black; */
+
+}
+
+.searchBar input:focus{
+    /* background-color: white; */
+    color: black;
+}
+
+@media(max-width:920px){
+    .navlinksElement{
+        display: none;
+    }
+    .searchBar{
+        width: 50%;
+        /* border: 1px solid red; */
+        float: right;
+    }
+
+    .HamBurger{
+        display: block;
+    }
 }

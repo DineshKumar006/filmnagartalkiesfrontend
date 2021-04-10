@@ -1,5 +1,7 @@
 const initialState={
-    teasersData:{}
+    teasersData:{},
+    TeaserDetails:{}
+
 }
 
 
@@ -10,7 +12,11 @@ const Reducer=(oldstate=initialState,actions)=>{
             ...oldstate,
             teasersData:actions.payload
         }
+        case "TEASER_DETAILS":return{
+            ...oldstate,
+            TeaserDetails:actions.payload
 
+        }
         default :return oldstate
     }
 }

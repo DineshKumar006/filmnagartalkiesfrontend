@@ -8,3 +8,10 @@ export const TeasersData=(payload)=>{
         payload
     }
 }
+
+export const TeasersDetail=(payload)=>{
+    return{
+        type:"TEASER_DETAILS",
+        payload
+    }
+}

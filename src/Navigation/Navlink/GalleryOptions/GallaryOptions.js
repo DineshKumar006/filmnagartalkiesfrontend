@@ -10,8 +10,11 @@ const GallaryOptions =()=> {
                 <DefaultOptions>
                     
                     <NavLink to='/Photoshoots' exact={true} activeClassName={Style.active}> Photoshoots  </NavLink>
-                    <NavLink to='/clebePic' exact={true} activeClassName={Style.active}> Cleberity Pics  </NavLink>
-                    <NavLink to='/trendingPic' exact={true} activeClassName={Style.active}> Trending Pics  </NavLink>
+                    <NavLink to='/Actors' exact={true} activeClassName={Style.active}> Actors  </NavLink>
+                    <NavLink to='/Actresses' exact={true} activeClassName={Style.active}> Actresses  </NavLink>
+                    <NavLink to='/Events' exact={true} activeClassName={Style.active}> Events  </NavLink>
+                    <NavLink to='/Workingstills' exact={true} activeClassName={Style.active}> Working Stills  </NavLink>
+
 
 
                 </DefaultOptions>

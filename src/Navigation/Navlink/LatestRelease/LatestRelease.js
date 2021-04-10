@@ -10,7 +10,7 @@ const LatestReleaseOptions =()=> {
                 <DefaultOptions>
                     
                     <NavLink to='/Teasers' exact={true} activeClassName={Style.active}> Teasers  </NavLink>
-                    <NavLink to='/Trailer' exact={true} activeClassName={Style.active}> Trailer  </NavLink>
+                    <NavLink to='/Trailers' exact={true} activeClassName={Style.active}> Trailer  </NavLink>
                     <NavLink to='/Posters' exact={true} activeClassName={Style.active}> Posters  </NavLink>
                     <NavLink to='/Songs' exact={true} activeClassName={Style.active}> Songs  </NavLink>
 

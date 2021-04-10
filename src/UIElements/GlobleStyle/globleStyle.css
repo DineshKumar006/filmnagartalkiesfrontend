@@ -1,0 +1,14 @@
+/* .MuiSvgIcon-root:hover{
+    width: 2em;
+    height: 2em;
+
+} */
+.defaultStyle{
+    overflow: hidden;
+}
+.defaultStyle:hover .MuiSvgIcon-root{
+    /* width: 2em;
+    height: 2em; */
+    transform: scale(1.5);
+    transition-duration: 1s;
+}

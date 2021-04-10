@@ -1,12 +1,12 @@
 import React, { Component,useState,useEffect } from 'react'
-import {getTeasers } from "../../controllers/FetchData/FetchData";
+import {getLimitedTeasers } from "../../controllers/FetchData/FetchData";
 
 import {useSelector,useDispatch} from 'react-redux'
-import { TeasersData} from '../../../ReduxStore/Actions/TeasersActions';
+import { TeasersData,TeasersDetail} from '../../../ReduxStore/Actions/TeasersActions';
 import Style from './Teasers.module.css';
 import Backdrop from '../../../UIElements/backdrop/Backdrop';
 
-const Teasers =()=> {
+const Teasers =(props)=> {
 
 // console.log(getTeasers())
 
@@ -19,7 +19,7 @@ useEffect(()=>{
     if(Object.keys(TeasersStateData.teasersData).length===0){
         setLoading(true)
         const FetchData=async()=>{
-            const  data=await getTeasers(1)
+            const  data=await getLimitedTeasers(1)
             dispatch(TeasersData(data))
             setLoading(false)
         }
@@ -30,9 +30,21 @@ useEffect(()=>{
 },[TeasersStateData.teasersData])
 
 
-console.log(TeasersStateData.teasersData)
+// console.log(TeasersStateData.teasersData)
+
+const moveToTeaserDetailHandler=(data)=>{
+    dispatch(TeasersDetail(data))
+
+    props.history.push({
+        pathname:`/TeaserDetail/${data._id}`,
+            })
+ 
+}
 
         return (
+            <div>
+                <h2 className={Style.titleHead}>Teasers</h2>
+
             <div className={`container-fluid ${Style.head}`}>
 
             {
@@ -41,7 +53,7 @@ console.log(TeasersStateData.teasersData)
                  <div className={Style.innerHead}>
 
                  {TeasersStateData.teasersData.map(ele=>{
-                     return <div key={ele._id} className={Style.contentHead}>
+                     return <div key={ele._id} className={Style.contentHead} onClick={()=>moveToTeaserDetailHandler(ele)}>
                               
                               <div  className={Style.imghead}>
                               <img src={ele.thumbnail} className={Style.image}/>
@@ -50,8 +62,8 @@ console.log(TeasersStateData.teasersData)
                             
 
                              <div className={Style.title}>
-                                    <p>{ele.moviename}</p>
-                                    <span>CAST:{ele.cast}</span>
+                                    <span className={Style.span1}>{ele.moviename}</span>
+                                    {/* <span className={Style.span2}>CAST:{ele.cast}</span> */}
                                 </div>
                               
                             </div>
@@ -64,13 +76,27 @@ console.log(TeasersStateData.teasersData)
                     <div  className={Style.eleHeadinner}><Backdrop/></div>
                     <div  className={Style.eleHeadinner}><Backdrop/></div>
                     <div  className={Style.eleHeadinner}><Backdrop/></div>
+                    <div  className={Style.eleHeadinner}><Backdrop/></div>
+                    <div  className={Style.eleHeadinner}><Backdrop/></div>
+                    <div  className={Style.eleHeadinner}><Backdrop/></div>
+                    <div  className={Style.eleHeadinner}><Backdrop/></div>
+                    <div  className={Style.eleHeadinner}><Backdrop/></div>
+
 
                     </div>
 
             }
 
+
+
+                  <div className={Style.suggestion}>
+                        hey
+                  </div>
             
             </div>
+
+            </div>
+
         )
     }
 export default Teasers;

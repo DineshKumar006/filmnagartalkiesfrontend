@@ -11,11 +11,19 @@ import thunk from 'redux-thunk';
 import ReviewDetailsReducer from './ReduxStore/Reducers/ReviewDetailsReducer'
 
 import TeasersReducer from './ReduxStore/Reducers/TeasersReducer'
+import TrailersReducer from './ReduxStore/Reducers/TrailersReducer'
+
+import DefaultReducer from './ReduxStore/Reducers/DefaultReducer'
+import DefaultDetailsReducer from './ReduxStore/Reducers/DefaultDetailsReducer'
+
 
 
 const rootReducer=combineReducers({
   ReviewDetailsData:ReviewDetailsReducer,
-  TeasersData:TeasersReducer
+  TeasersData:TeasersReducer,
+  TrailersData:TrailersReducer,
+  DefaultData:DefaultReducer,
+  DefaultDetailsData:DefaultDetailsReducer
 })
 
 

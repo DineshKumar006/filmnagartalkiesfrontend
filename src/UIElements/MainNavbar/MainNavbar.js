@@ -3,7 +3,7 @@ import Style from "./MainNavbar.module.css";
 const  MainNavbar =(props)=>  {
    
         return (
-            <div className={`container-fluid ${Style.main}`}>
+            <div className={` ${Style.main}`}>
                 {props.children}
             </div>
         )

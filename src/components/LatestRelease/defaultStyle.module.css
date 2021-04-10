@@ -1,0 +1,79 @@
+.maincomponent{
+    /* border: 1px solid red; */
+    min-height: 100vh;
+}
+
+.outerBox{
+    /* border: 1px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+}
+
+
+.innerBox{
+    /* border: 1px solid rgb(158, 158, 158); */
+    box-shadow: 0px 0px 5px 0px black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 350px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+
+}
+
+.playIcon{
+    position: absolute;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); */
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* .icon{
+    z-index: 10;
+    opacity: none;
+} */
+.playIcon:hover{
+    /* background-color: grey;
+    opacity: 0.6; */
+
+}
+.innerBox .imageHead{
+    overflow: hidden;
+    width: 360px;
+    height:80%;
+}
+
+
+.innerBox img{
+    width: 100%;
+    height: 100%;
+}
+.innerBox img:hover{
+    transform: scale(1.1);
+    transition-duration: 1s;
+}
+
+.innerBox p{
+    font-size: larger;
+    letter-spacing: 1px;
+    color: grey;
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 14%;
+}

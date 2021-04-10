@@ -38,66 +38,116 @@ const Footer =()=>  {
         return (
             // <div className={Style.mainHeader}>
 
-                <div className={`${Style.contactusheader} container-fluid`}>
+                <div className={`${Style.contactusheader} `}>
 
-                            <div  className={Style.logo}>
-                                <div className={Style.logoinner}>
-                                <img src={Logo}  />
-                                 </div>
-                               
-                                 <p>
-                                    <span className={Style.span1}>
-                                    FILMNAGAR-
-                                    </span>
-                                    <span className={Style.span2}>
-                                    Talkies
-                                    </span>
-                                    
-                                 </p>
+                     <div className={Style.logo2}>
 
+                        <div className={Style.logoinner}>
+                        <img src={Logo}  />
+                        </div>
 
+                        <p>
+                            <span className={Style.span1}>
+                            FILMNAGAR-
+                            </span>
+                            <span className={Style.span2}>
+                            Talkies
+                            </span>
+                            
+                        </p>
+                     </div>
+
+                    <div  className={Style.aboutus2}>
+                        <span className={Style.title}>About us</span>
+                        <p className={Style.aboutusPara}>Film Nagar Talkies Digital Media Company is all about Telugu Cinema updates,
+                             Movie Promotions, Exclusive Interviews,Celebrities,
+                            Brand  Promotions,Short Films and Content Creation !</p>
+
+                        <p className={Style.contactus}>
+                            Contactus: <span>filmnagartalkies@gmail.com</span>
+                            </p>
+
+                    </div>
+
+                      <div className= {Style.followus2}>
+                        <ul >
+                            <p className={Style.title}>Follow on</p>
+
+                            <div className={Style.followuslogo}>
+
+                            <li onClick={instaclick}><InstagramIcon style={{fontSize:25 ,color:red[500]}}/></li>
+                            <li onClick={facebookclick}><FacebookIcon style={{fontSize:25 , color:blue[500]}}/></li>
+                            <li onClick={youtubeclick}><YouTubeIcon style={{fontSize:25, color:red[500]}}/></li>
+                            <li onClick={twitterclick}><TwitterIcon style={{fontSize:25,  color:blue[500]}}/></li>
+                            <li onClick={pinterestclick}><PinterestIcon style={{fontSize:25, color:red[500]}}/></li>
                             </div>
+                            
+
+                        </ul>
+                     </div>  
 
 
-
-                            <div  className={Style.aboutus}>
-                                <span className={Style.title}>About us</span>
-
-                                <p className={Style.aboutusPara}>Film Nagar Talkies Digital Media Company is all about Telugu Cinema updates,
-                                     Movie Promotions, Exclusive Interviews,Celebrities,
-                                     Brand  Promotions,Short Films and Content Creation !</p>
-
-                                 <p className={Style.contactus}>
-                                     Contactus: <span>filmnagartalkies@gmail.com</span>
-                                     </p>
-
-                            </div>
-
-
-
-
-                            {/* <div className= {Style.followus}>    */}
-                                    <ul className= {Style.followus}>
-                                        <p className={Style.title}>Follow on</p>
-
-                                        <div className={Style.followuslogo}>
-
-                                        <li onClick={instaclick}><InstagramIcon style={{fontSize:25 ,color:red[500]}}/></li>
-                                        <li onClick={facebookclick}><FacebookIcon style={{fontSize:25 , color:blue[500]}}/></li>
-                                        <li onClick={youtubeclick}><YouTubeIcon style={{fontSize:25, color:red[500]}}/></li>
-                                        <li onClick={twitterclick}><TwitterIcon style={{fontSize:25,  color:blue[500]}}/></li>
-                                        <li onClick={pinterestclick}><PinterestIcon style={{fontSize:25, color:red[500]}}/></li>
-                                        </div>
-                                        
-
-                                    </ul>
-                            {/* </div>      */}
 
                 </div>
           
-            // </div>
         );
     }
 
 
 export default Footer;
+
+
+
+
+
+
+// <div  className={Style.logo}>
+// {/* <div className={Style.logoinner}>
+// <img src={Logo}  />
+//  </div>
+
+//  <p>
+//     <span className={Style.span1}>
+//     FILMNAGAR-
+//     </span>
+//     <span className={Style.span2}>
+//     Talkies
+//     </span>
+    
+//  </p>
+//     */}
+
+// </div>
+
+
+
+// <div  className={Style.aboutus}>
+// {/* <span className={Style.title}>About us</span>
+
+// <p className={Style.aboutusPara}>Film Nagar Talkies Digital Media Company is all about Telugu Cinema updates,
+//      Movie Promotions, Exclusive Interviews,Celebrities,
+//      Brand  Promotions,Short Films and Content Creation !</p>
+
+//  <p className={Style.contactus}>
+//      Contactus: <span>filmnagartalkies@gmail.com</span>
+//      </p> */}
+
+// </div>
+
+
+
+
+    // {/* <ul className= {Style.followus}>
+    //     <p className={Style.title}>Follow on</p>
+
+    //     <div className={Style.followuslogo}>
+
+    //     <li onClick={instaclick}><InstagramIcon style={{fontSize:25 ,color:red[500]}}/></li>
+    //     <li onClick={facebookclick}><FacebookIcon style={{fontSize:25 , color:blue[500]}}/></li>
+    //     <li onClick={youtubeclick}><YouTubeIcon style={{fontSize:25, color:red[500]}}/></li>
+    //     <li onClick={twitterclick}><TwitterIcon style={{fontSize:25,  color:blue[500]}}/></li>
+    //     <li onClick={pinterestclick}><PinterestIcon style={{fontSize:25, color:red[500]}}/></li>
+    //     </div>
+        
+
+    // </ul> */}

@@ -136,3 +136,21 @@ export const addFilmNewsDetailsDataById=(payload)=>{
     } 
 
 }
+
+export const addInterviewsDataHandler=(payload)=>{
+    // console.log(payload)
+    return{
+        type:"ADD_INTERVIEWS_DATA",
+        payload
+    }
+}
+
+
+
+export const addInterviewsDetailsDataById=(payload)=>{
+    return{
+        type:"ADD_INTERVIEWS_DETAILS",
+        payload
+    } 
+
+}

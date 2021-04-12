@@ -1,10 +1,10 @@
 import React, { useState,useEffect } from 'react'
-import Style from './newsStyle.module.css'
-import {getLimitedFilmnews} from '../controllers/FetchData/FetchData'
+import Style from './InterviewsStyle.module.css'
+import {getLimitedInterviews} from '../controllers/FetchData/FetchData'
 
 
 import {useSelector,useDispatch} from 'react-redux'
-import { addFilmNewsDataHandler,addFilmNewsDetailsDataById} from '../../ReduxStore/Actions/DefaultActions';
+import { addInterviewsDetailsDataById,addInterviewsDataHandler} from '../../ReduxStore/Actions/DefaultActions';
 import Backdrop from '../../UIElements/backdrop/Backdrop';
 
 const  InterViews =(props)=>  {
@@ -15,12 +15,12 @@ const  InterViews =(props)=>  {
     const DefaultData=useSelector(state=>state.DefaultData)
 
     useEffect(()=>{
-        if(Object.keys(DefaultData.LimitedFilmNewsData).length===0){
+        if(Object.keys(DefaultData.LimitedInterviewsData).length===0){
             setLoading(true)
             const FetchData=async()=>{
-                const  data=await getLimitedFilmnews(1)
+                const  data=await getLimitedInterviews(1)
                 console.log(data)
-                dispatch(addFilmNewsDataHandler(data))
+                dispatch(addInterviewsDataHandler(data))
                 setLoading(false)
             }
             FetchData()
@@ -28,8 +28,8 @@ const  InterViews =(props)=>  {
     },[])
 
     const clickHandler=(data)=>{
-        // dispatch(addFilmNewsDetailsDataById(data))
-        // props.history.push(`/FilmNewsDetails/${data._id}`)
+        dispatch(addInterviewsDetailsDataById(data))
+        props.history.push(`/InterviewsDetails/${data._id}`)
     }  
      
 
@@ -37,17 +37,17 @@ const  InterViews =(props)=>  {
             <div className={`container ${Style.maincomponent}`}>
 
             {
-             (Object.keys(DefaultData.LimitedFilmNewsData).length!==0 && Loading==false)?
+             (Object.keys(DefaultData.LimitedInterviewsData).length!==0 && Loading==false)?
 
              <div className={Style.outerBox}>
-                 {DefaultData.LimitedFilmNewsData.map(ele=>{
+                 {DefaultData.LimitedInterviewsData.map(ele=>{
                      return <div key={ele._id} className={Style.innerBox} onClick={()=>clickHandler(ele)}>
 
                             <div className={Style.imageHead}>
                             <img src={ele.thumbnail}/>
                              </div>
 
-                             <p>{ele.newsTitle}</p>
+                             <p className={Style.title_text}>{ele.title}</p>
                             </div>
                  })
                  

@@ -12,7 +12,7 @@ function App() {
   return (
     <div className={Style.App}>
 
-      <img src={url5} className={Style.image}/>
+      {/* <img src={url5} className={Style.image}/> */}
 
     <div className={Style.navBar}>
             <Navlinks/>

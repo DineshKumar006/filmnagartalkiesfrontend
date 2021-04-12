@@ -286,3 +286,28 @@ export const getFilmNewsDetailsByid=async(id)=>{
         return "some thing went wrong"
     }
 }
+
+
+
+export const getLimitedInterviews=async()=>{
+ 
+    try {
+        const response=await axios.get(`https://filmnagartalkies-backendv2.herokuapp.com/api/fnt/getLimitedInterviews?pageno=1&limit=10`)
+        return response.data.result
+    } catch (error) {
+        console.log(error)
+        return "some thing went wrong"
+    }
+}
+
+export const getInterviewDetailsByid=async(id)=>{
+    try {
+        const response=await axios.get(`https://filmnagartalkies-backendv2.herokuapp.com/api/fnt/getInterview/${id}`)
+        // console.log('dinesh kumar')
+        return response.data.result
+        
+    } catch (error) {
+        console.log(error)
+        return "some thing went wrong"
+    }
+}

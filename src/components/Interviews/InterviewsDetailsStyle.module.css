@@ -1,0 +1,128 @@
+.mainContainer{
+    /* border: 1px solid red; */
+    min-height: 520px;
+    /* background-color: black; */
+}
+
+.Backdrop{
+/* border: 1px solid red; */
+    height: 468px;
+    width: 832px;
+}
+.Backdrop2{
+    /* border: 1px solid; */
+    width: 720px;
+    height:356px;
+    /* margin-top: 20px; */
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+.mainContainer .headimg{
+    width: 100%;
+    min-height: 520px;
+/* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    
+}
+
+.mainContainer .headimg img{
+    width: 75%;
+    height: 90%;
+    box-shadow: 0px 0px 5px 0px black;
+    /* border-radius: 5px; */
+    
+}
+
+.mainContainer .headimg p{
+    /* border: 1px solid red; */
+    width: 75%;
+    height: 10%;
+color: grey;
+    font-size:xx-large;
+    /* color: black; */
+    letter-spacing: 2px;
+ 
+
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    /* margin-left: 5px; */
+    /* padding-left: 3px; */
+}
+
+.mainContainer2{
+    /* border: 1px solid green; */
+    width: 100%;
+    display: flex ;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    /* margin-top: 10px; */
+    margin-bottom: 20px;
+    min-height: 500px;
+
+     
+}
+.mainContainer2 .headimg2{
+        margin-top: 20px;
+overflow: hidden;
+}
+
+.mainContainer2 .headimg2 img{
+
+    width: 280px;
+    height: 230px;
+    box-shadow: 0px 0px 10px 0px black;
+    cursor: pointer;
+
+    /* border-radius: 5px; */
+}
+
+.mainContainer2 .headimg2 img:hover{
+    transform: scale(1.1);
+    transition-duration: 1s;
+
+    
+}
+
+
+ .video{
+    /* box-shadow: 0px 0px 5px 0px red; */
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    width: 720px;
+    height: 400px ;
+
+   }
+
+   @media(max-width:45rem){
+    .video{
+     width: 400px;
+     height: 200px ; 
+    }
+}
+
+   .video .videoEle{
+       width:100% ;
+       height: 100%;
+   }
+     .video button{
+       width: 100%;
+       padding: 10px 0px;
+       border: none;
+       outline: none;
+       background-color: red;
+       color: white;
+       letter-spacing: 2px;
+   }
+   
+  

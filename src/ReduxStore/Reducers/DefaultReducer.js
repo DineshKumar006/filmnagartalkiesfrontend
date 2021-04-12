@@ -8,7 +8,8 @@ const initialState={
     LimitedWorkingStillsData:{},
     LimitedAlbumsData:{},
     LimitedGeneralNewsData:{},
-    LimitedFilmNewsData:{}
+    LimitedFilmNewsData:{},
+    LimitedInterviewsData:{}
 
 }
 
@@ -60,6 +61,12 @@ const Reducer=(oldstate=initialState,actions)=>{
     case "ADD_FILM_NEWS_DATA":return{
         ...oldstate,
         LimitedFilmNewsData:actions.payload
+
+    }
+
+    case "ADD_INTERVIEWS_DATA":return{
+        ...oldstate,
+        LimitedInterviewsData:actions.payload
 
     }
 

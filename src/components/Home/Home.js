@@ -16,9 +16,9 @@ import { useSelector,useDispatch  } from "react-redux";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/swiper-bundle.css'
-import SwiperCore, { EffectCube ,Autoplay,EffectCoverflow} from 'swiper';
+import SwiperCore, { EffectCube,Pagination ,Autoplay,EffectCoverflow} from 'swiper';
 
-SwiperCore.use([EffectCube,Autoplay,EffectCoverflow]);
+SwiperCore.use([EffectCube,Autoplay,EffectCoverflow,Pagination]);
 
 
 
@@ -186,6 +186,20 @@ const Home =(props)=> {
                         </div>
 
                         <div className={Style.imageContainer}>
+
+                                <div className={Style.imageContainer_box1}>
+                               
+                               
+                                <img src="https://cdn.dnaindia.com/sites/default/files/styles/full/public/2021/01/25/952506-rrr-releasedate.jpg"/>
+                                
+                                <p className={Style.imageContainer_box1_text}>Most Trending Teaser</p>
+
+                                
+                                </div>
+
+                                <div className={Style.imageContainer_box2}>
+
+
                             {Object.keys(defautStateData.LimitedTeasersData).length>0 ? 
 
                                 <Swiper
@@ -195,19 +209,25 @@ const Home =(props)=> {
                                 centeredSlides={true}
                                 slidesPerView= 'auto'
                                 loop={true}
-                                autoplay={{
-                                    delay: 2000,
-                                    disableOnInteraction: false
-                                  }}
+                                // autoplay={{
+                                //     delay: 2000,
+                                //     disableOnInteraction: false
+                                //   }}
+                                direction="vertical"
+
+                                pagination={{ clickable: true }}
+
+
                                 coverflowEffect= {{
-                                    rotate: 50,
+                                    rotate: 20,
                                     stretch: 0,
-                                    depth: 100,
+                                    depth: 80,
                                     modifier: 8,
                                     slideShadows: true,
                                 }}
 
                                 >
+
 
                                 {
                         
@@ -225,10 +245,14 @@ const Home =(props)=> {
 
                                 </Swiper>
 
+
                                 :<div className={Style.BackdropHead}>
                                     <Backdrop/>
                                 </div>
                             }
+
+                                </div>
+
                         </div>
 
                     </div>
@@ -242,6 +266,23 @@ const Home =(props)=> {
 
 
                     <div className={Style.imageContainer}>
+
+
+
+                    <div className={Style.imageContainer_box1}>
+                               
+                               
+                               <img src="https://cdn.dnaindia.com/sites/default/files/styles/full/public/2021/01/25/952506-rrr-releasedate.jpg"/>
+                               
+                               <p className={Style.imageContainer_box1_text}>Most Trending Trailer</p>
+
+                               
+                               </div>
+
+                               <div className={Style.imageContainer_box2}>
+
+
+
                             {Object.keys(defautStateData.LimitedTrailerData).length>0 ? 
                                 <Swiper
 
@@ -255,10 +296,15 @@ const Home =(props)=> {
                                 centeredSlides={true}
                                 slidesPerView= 'auto'
                                 loop={true}
+                                direction="vertical"
+
+                                pagination={{ clickable: true }}
+
+
                                 coverflowEffect= {{
-                                    rotate: 50,
+                                    rotate: 20,
                                     stretch: 0,
-                                    depth: 100,
+                                    depth: 80,
                                     modifier: 8,
                                     slideShadows: true,
                                 }}
@@ -267,10 +313,7 @@ const Home =(props)=> {
 
                                 {
                                 defautStateData.LimitedTrailerData.map(ele=>{
-                                        // return <div key={ele._id} className={Style.imagehead} onClick={()=>clickHandler('trailer',ele)}>
-                                        //         <img src={ele.thumbnail}/>
-                                        //     </div>
-
+                                      
                                 return <SwiperSlide key={ele._id} className={Style.imagehead} >
                                          <img src={ele.thumbnail}/>
                                        </SwiperSlide>
@@ -282,6 +325,7 @@ const Home =(props)=> {
                                     <Backdrop/>
                                 </div>
                             }
+                            </div>
                         </div>
                     </div>
                 </div>

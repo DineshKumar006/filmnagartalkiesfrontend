@@ -34,11 +34,21 @@ import FilmNewsDetailsComponent from '../../components/News/FilmNewsDetails'
 
 import GeneralNewsDetailsComponent from '../../components/News/GeneralNewsDetails'
 
+import InterviewsComponent from '../../components/Interviews/Interviews'
+import InterviewDetailsComponent from '../../components/Interviews/InterviewsDetails'
+
+
+
+
 
 import SongsComponent from '../../components/LatestRelease/Songs/Albums';
 import AlbumDetailsComponent from '../../components/LatestRelease/Songs/AlbumDetails/AlbumDetails';
+
+
 import Navlinks from '../Navlink/Navlinks';
 import  Style  from './Style.module.css';
+
+
 const RouterComponent =()=>  {
 
     const myroutes=(
@@ -81,6 +91,12 @@ const RouterComponent =()=>  {
         <Route path='/FilmNewsDetails/:id' exact={true} component={FilmNewsDetailsComponent}/>
 
 
+        <Route path='/Interviews' exact={true} component={InterviewsComponent}/>
+        <Route path='/InterviewsDetails/:id' exact={true} component={InterviewDetailsComponent}/>
+
+
+
+        
         
         
 

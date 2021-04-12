@@ -8,6 +8,8 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import PinterestIcon from '@material-ui/icons/Pinterest';
 import { red ,blue } from '@material-ui/core/colors';
 import Logo from '../../#images/FNT_logo.jpg';
+import FNT_logoMain from '../../#images/FNT_logoMain.png'
+
 // import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 // import { borderRadius } from '@material-ui/system';
 
@@ -38,21 +40,21 @@ const Footer =()=>  {
         return (
             // <div className={Style.mainHeader}>
 
-                <div className={`${Style.contactusheader} `}>
+                <div className={`${Style.contactusheader} `} id="aboutus">
 
                      <div className={Style.logo2}>
 
                         <div className={Style.logoinner}>
-                        <img src={Logo}  />
+                        <img src={FNT_logoMain}  />
                         </div>
 
                         <p>
                             <span className={Style.span1}>
-                            FILMNAGAR-
+                            FILM NAGAR TALKIES
                             </span>
-                            <span className={Style.span2}>
-                            Talkies
-                            </span>
+                            {/* <span className={Style.span2}>
+                            TALKIES
+                            </span> */}
                             
                         </p>
                      </div>

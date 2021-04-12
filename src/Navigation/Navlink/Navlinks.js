@@ -9,12 +9,23 @@ import NewsOptions from './NewsOptions/NewsOptions';
 import LatestReleaseOptions from './LatestRelease/LatestRelease';
 import HamBurger from '../../UIElements/hamBurger/HamBurger'
 import {red,grey} from '@material-ui/core/colors'
-const  NavlinksComponent =()=>  {
+import FNT_logoMain from '../../#images/FNT_logoMain.png'
+import {useHistory} from 'react-router-dom'
+import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
+const  NavlinksComponent =(props)=>  {
+
+    const history=useHistory()
+    const navigateHandler=()=>{
+        history.push('/')
+    }
     const [openOptions,setOpenOptions]=useState(false)
         return (
             <div className={` ${Style.NavlinkHead}`}>
 
-
+                <div className={Style.Mainlogo}>
+                        <img src={FNT_logoMain} onClick={navigateHandler} />
+                </div>
 
                 <div className={Style.HamBurger}>
                     <HamBurger/>
@@ -69,7 +80,34 @@ const  NavlinksComponent =()=>  {
                            <GallaryOptions/>
                         </div>
                    </span>
-               <NavLink to='/About' exact={true} activeClassName={Style.active}> About us  </NavLink>
+
+
+                   
+
+               <span className={Style.gallary}>
+                          Audio Book    
+                        <ArrowDropDownIcon style={{fontSize:15}}/>
+
+                        {/* <div className={Style.gallaryOptions}>
+                        <p className={Style.dropdonwArrow}> <ArrowDropDownIcon style={{fontSize:30,color:grey[900]}}/></p>
+
+                           <GallaryOptions/>
+                        </div> */}
+                   </span>
+
+                   <span className={Style.gallary}>
+                          Apps     
+                        <ArrowDropDownIcon style={{fontSize:15}}/>
+
+                   </span>
+
+                   {/* activeClass={Style.active} hashSpy={true} to="shop_by_brand" spy={true}  smooth={true} offset={-100}  duration={500}  */}
+
+               <Link to='aboutus' exact={true} activeClass={Style.active}
+                hashSpy={true}  spy={true}  smooth={true} offset={-10}  duration={500}
+               
+               
+               > About us  </Link>
 
 
 

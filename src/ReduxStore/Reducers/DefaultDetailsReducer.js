@@ -6,7 +6,9 @@ const initialState={
     WorkingStillDetailsData:{},
     AlbumDetailsData:{},
     FilmNewsDetailsData:{},
-    GeneralNewsDetailsData:{}
+    GeneralNewsDetailsData:{},
+    InterviewsDetailsData:{}
+
 
 }
 
@@ -51,6 +53,13 @@ const Reducer=(oldstate=initialState,actions)=>{
        case "ADD_GENERAL_NEWS_DETAILS":return{
         ...oldstate,
         GeneralNewsDetailsData:actions.payload
+    }
+
+    
+
+    case "ADD_INTERVIEWS_DETAILS":return{
+        ...oldstate,
+        InterviewsDetailsData:actions.payload
     }
 
 

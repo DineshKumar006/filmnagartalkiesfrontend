@@ -103,7 +103,7 @@ const  NavlinksComponent =(props)=>  {
 
                    {/* activeClass={Style.active} hashSpy={true} to="shop_by_brand" spy={true}  smooth={true} offset={-100}  duration={500}  */}
 
-               <Link to='aboutus' exact={true} activeClass={Style.active}
+               <Link to='aboutus'  activeClass={Style.active}
                 hashSpy={true}  spy={true}  smooth={true} offset={-10}  duration={500}
                
                

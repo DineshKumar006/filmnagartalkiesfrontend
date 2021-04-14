@@ -16,9 +16,9 @@ import { useSelector,useDispatch  } from "react-redux";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/swiper-bundle.css'
-import SwiperCore, { EffectCube,Pagination ,Autoplay,EffectCoverflow} from 'swiper';
+import SwiperCore, { EffectCube,Pagination,Mousewheel ,Autoplay,EffectCoverflow} from 'swiper';
 
-SwiperCore.use([EffectCube,Autoplay,EffectCoverflow,Pagination]);
+SwiperCore.use([EffectCube,Autoplay,EffectCoverflow,Pagination,Mousewheel]);
 
 
 
@@ -49,6 +49,10 @@ const Home =(props)=> {
 
     },[])
     console.log(defautStateData)
+
+    const onSlideChangeHandler=(e)=>{
+        console.log(e)
+    }
 
     const clickHandler=(type,data)=>{
         if(type=="trailer"){
@@ -216,13 +220,23 @@ const Home =(props)=> {
                                 direction="vertical"
 
                                 pagination={{ clickable: true }}
+                               mousewheel={true}
 
 
-                                coverflowEffect= {{
-                                    rotate: 20,
+                                // coverflowEffect= {{
+                                //     rotate: 20,
+                                //     stretch: 0,
+                                //     depth: 80,
+                                //     modifier: 8,
+                                //     slideShadows: true,
+                                // }}
+                                // slideActiveClass={Style.activeSlider}
+                                onSlideChange={onSlideChangeHandler}
+                                coverflowEffect={{
+                                    rotate: 50,
                                     stretch: 0,
-                                    depth: 80,
-                                    modifier: 8,
+                                    depth: 100,
+                                    modifier: 1,
                                     slideShadows: true,
                                 }}
 
@@ -297,15 +311,23 @@ const Home =(props)=> {
                                 slidesPerView= 'auto'
                                 loop={true}
                                 direction="vertical"
+                                mousewheel={true}
 
                                 pagination={{ clickable: true }}
 
 
-                                coverflowEffect= {{
-                                    rotate: 20,
+                                // coverflowEffect= {{
+                                //     rotate: 20,
+                                //     stretch: 0,
+                                //     depth: 80,
+                                //     modifier: 8,
+                                //     slideShadows: true,
+                                // }}
+                                coverflowEffect={{
+                                    rotate: 50,
                                     stretch: 0,
-                                    depth: 80,
-                                    modifier: 8,
+                                    depth: 100,
+                                    modifier: 1,
                                     slideShadows: true,
                                 }}
                                 

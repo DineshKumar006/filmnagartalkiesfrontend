@@ -19,8 +19,23 @@ const  NavlinksComponent =(props)=>  {
     const navigateHandler=()=>{
         history.push('/')
     }
+    
     const [openOptions,setOpenOptions]=useState(false)
+
+
+
+    const renderSearchComponent=()=>{
+        return(
+            <div className={` ${Style.searchBar}`}>
+            <input type="text" placeholder="Search Your Like"  className={'container'}/>
+        </div>
+        )
+    }
         return (
+
+            <div className={`container ${Style.Head}`}>
+
+           
             <div className={` ${Style.NavlinkHead}`}>
 
                 <div className={Style.Mainlogo}>
@@ -84,16 +99,16 @@ const  NavlinksComponent =(props)=>  {
 
                    
 
-               <span className={Style.gallary}>
+               {/* <span className={Style.gallary}>
                           Audio Book    
                         <ArrowDropDownIcon style={{fontSize:15}}/>
 
-                        {/* <div className={Style.gallaryOptions}>
+                         <div className={Style.gallaryOptions}>
                         <p className={Style.dropdonwArrow}> <ArrowDropDownIcon style={{fontSize:30,color:grey[900]}}/></p>
 
                            <GallaryOptions/>
-                        </div> */}
-                   </span>
+                        </div> 
+                   </span> */}
 
                    <span className={Style.gallary}>
                           Apps     
@@ -104,20 +119,16 @@ const  NavlinksComponent =(props)=>  {
                    {/* activeClass={Style.active} hashSpy={true} to="shop_by_brand" spy={true}  smooth={true} offset={-100}  duration={500}  */}
 
                <Link to='aboutus'  activeClass={Style.active}
-                hashSpy={true}  spy={true}  smooth={true} offset={-10}  duration={500}
-               
-               
-               > About us  </Link>
-
-
-
-              
+                hashSpy={true}  spy={true}  smooth={true} offset={-10}  duration={500}> About us  </Link>
                </MainNavbar>
                </div>
 
-               <div className={` ${Style.searchBar}`}>
-                  <input type="text" placeholder="Search Your Like"  className={'container'}/>
-              </div>
+              
+             </div>
+
+
+             {renderSearchComponent()}
+
             </div>
         )
     

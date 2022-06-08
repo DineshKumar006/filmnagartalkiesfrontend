@@ -15,7 +15,9 @@ min-height: 100vh;
 }
 .App .middleContent{
   /* border: 1px solid green; */
-  padding-top: 10px !important;
+  /* padding-top: 40px !important; */
+  margin-top: 120px !important;
+  box-sizing: border-box;
 }
 .App .image{
   position: fixed;

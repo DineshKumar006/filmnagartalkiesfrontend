@@ -3,7 +3,14 @@ import Style from './App.module.css';
 import RouterComponent from './Navigation/Router/Router';
 import Footer from './components/Footer/Footer';
 import Navlinks from './Navigation/Navlink/Navlinks'
-function App() {
+import { useEffect } from 'react';
+import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller, animateScroll } from 'react-scroll'
+
+const  App=()=> {
+
+  useEffect(()=>{
+    scroll.scrollToTop();
+  },[])
   let url5="https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=4000&q=3000"
   let url4="https://images.unsplash.com/photo-1558811916-51c8d56d29c6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=1600"
   let url3="https://images.unsplash.com/photo-1613512410692-4e9cb89fb9d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=3252&q=2318"

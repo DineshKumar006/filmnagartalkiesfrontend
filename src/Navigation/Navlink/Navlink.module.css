@@ -1,10 +1,22 @@
+.Head{
 
+    min-height: 100px;
+    /* border: 2px solid olive; */
+    display: flex;
+    justify-content: space-between;
+
+    align-items: flex-end;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+}
 .NavlinkHead{
     /* border: 1px solid green; */
     /* border-bottom: 1px solid gray; */
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    /* flex-direction: ; */
+    justify-content: space-between;
     align-items: center;
     /* background-color: rgb(167, 166, 166); */
     background-color: white;
@@ -173,7 +185,7 @@ z-index: 10
 
 .navlinksElement{
     border-bottom: 1px solid orangered;
-    width: 70%;
+    width: 92%;
     height: 50%;
     display: flex;
     justify-content: space-between;
@@ -190,11 +202,12 @@ z-index: 10
 
 .searchBar{
     /* border: 1px solid green; */
-    width: 20%;
-    height:50%;
-    display: flex;
+    width: 30%;
+    height:40px;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+    /* float: right; */
 }
 
 

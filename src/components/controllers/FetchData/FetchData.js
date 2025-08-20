@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-let baseUrl = "http://localhost:9000"
+let baseUrl = "https://filmnagartalkiesbackend.onrender.com"
 export const fetchReviewDataById = async (id) => {
     try {
         // ${baseUrl}/api/fnt/getReview/602cf50f16faaa0015639250

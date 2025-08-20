@@ -83,5 +83,6 @@ firebase deploy
 
 
 # Steps to Redeploy a New React Build
+npm run build
 # firebase deploy
 

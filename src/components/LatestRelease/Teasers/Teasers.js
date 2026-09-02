@@ -1,4 +1,4 @@
-import React, { Component,useState,useEffect } from 'react'
+import React, { Component,useState,useEffect,useRef } from 'react'
 import {getLimitedTeasers } from "../../controllers/FetchData/FetchData";
 
 import {useSelector,useDispatch} from 'react-redux'
@@ -15,19 +15,38 @@ const [loading,setLoading]=useState(false)
     const TeasersStateData=useSelector(state=>state.TeasersData)
     const dispatch=useDispatch()
 
-useEffect(()=>{
-    if(Object.keys(TeasersStateData.teasersData).length===0){
-        setLoading(true)
-        const FetchData=async()=>{
-            const  data=await getLimitedTeasers(1)
-            dispatch(TeasersData(data))
-            setLoading(false)
-        }
-        FetchData()
-       
-    }
+// guards the fetch so it fires only once per mount, even if the API
+// responds with an empty list (which would otherwise re-trigger the effect)
+const fetchedRef=useRef(false)
 
-},[TeasersStateData.teasersData])
+const teasers=Array.isArray(TeasersStateData.teasersData)?TeasersStateData.teasersData:[]
+
+useEffect(()=>{
+    if(fetchedRef.current || teasers.length!==0){
+        return
+    }
+    fetchedRef.current=true
+
+    let isMounted=true
+    setLoading(true)
+
+    const FetchData=async()=>{
+        const data=await getLimitedTeasers(1)
+        if(!isMounted){
+            return
+        }
+        if(Array.isArray(data)){
+            dispatch(TeasersData(data))
+        }
+        setLoading(false)
+    }
+    FetchData()
+
+    return ()=>{
+        isMounted=false
+    }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+},[])
 
 
 // console.log(TeasersStateData.teasersData)
@@ -49,10 +68,10 @@ const moveToTeaserDetailHandler=(data)=>{
 
             {
             
-            (Object.keys(TeasersStateData.teasersData).length!==0 && loading==false)?
+            (teasers.length!==0 && loading===false)?
                  <div className={Style.innerHead}>
 
-                 {TeasersStateData.teasersData.map(ele=>{
+                 {teasers.map(ele=>{
                      return <div key={ele._id} className={Style.contentHead} onClick={()=>moveToTeaserDetailHandler(ele)}>
                               
                               <div  className={Style.imghead}>

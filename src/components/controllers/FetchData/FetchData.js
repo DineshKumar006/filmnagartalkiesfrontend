@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// let baseUrl = "https://filmnagartalkiesbackend-3pqr.onrender.com"
-let baseUrl = "http://localhost:3000"
+let baseUrl = "https://filmnagartalkiesbackend-3pqr.onrender.com"
+// let baseUrl = "http://localhost:9000"
 
 export const fetchReviewDataById = async (id) => {
     try {

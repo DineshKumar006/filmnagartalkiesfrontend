@@ -32,11 +32,11 @@ const Home = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                if (defautStateData?.LimitedTeasersData && Object.keys(defautStateData.LimitedTeasersData).length == 0) {
+                if (!Array.isArray(defautStateData?.LimitedTeasersData) || defautStateData.LimitedTeasersData.length === 0) {
                     const r1 = await getLimitedTeasers();
                     dispatch(LimitedTeasersData(r1))
                 }
-                if (defautStateData?.LimitedTeasersData && Object.keys(defautStateData.LimitedTrailerData).length == 0) {
+                if (!Array.isArray(defautStateData?.LimitedTrailerData) || defautStateData.LimitedTrailerData.length === 0) {
                     const r2 = await getLimitedTrailers();
                     dispatch(LimitedTrailerData(r2))
                 }
@@ -204,7 +204,7 @@ const Home = (props) => {
                         <div className={Style.imageContainer_box2}>
 
 
-                            {defautStateData?.LimitedTeasersData && Object.keys(defautStateData.LimitedTeasersData).length > 0 ?
+                            {Array.isArray(defautStateData?.LimitedTeasersData) && defautStateData.LimitedTeasersData.length > 0 ?
 
                                 <Swiper
                                     effect="coverflow"
@@ -245,7 +245,7 @@ const Home = (props) => {
 
                                     {
 
-                                        defautStateData?.LimitedTeasersData && defautStateData.LimitedTeasersData?.map(ele => {
+                                        defautStateData.LimitedTeasersData.map(ele => {
                                             // return <div key={ele._id} className={Style.imagehead}  onClick={()=>clickHandler('teaser',ele)}>
                                             //         <img src={ele.thumbnail}/>
                                             //     </div>
@@ -297,7 +297,7 @@ const Home = (props) => {
 
 
 
-                            {Object.keys(defautStateData.LimitedTrailerData).length > 0 ?
+                            {Array.isArray(defautStateData?.LimitedTrailerData) && defautStateData.LimitedTrailerData.length > 0 ?
                                 <Swiper
 
                                     autoplay={{

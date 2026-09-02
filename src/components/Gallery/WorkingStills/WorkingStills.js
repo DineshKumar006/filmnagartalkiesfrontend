@@ -1,5 +1,8 @@
 import React, { Component, useEffect, useState } from 'react'
 import Style from '../defaultStyle.module.css';
+import PageHeader from '../../../UIElements/PageHeader/PageHeader'
+import Backdrop from '../../../UIElements/backdrop/Backdrop'
+import CameraRollIcon from '@material-ui/icons/CameraRoll'
 import { getLimitedWorkingStills } from "../../controllers/FetchData/FetchData";
 
 import {addWorkingStillDetailsDataById,addAllWorkingStillDataHandler} from '../../../ReduxStore/Actions/DefaultActions'
@@ -13,7 +16,7 @@ const Events =(props)=>  {
     const [Loading,setLoading]=useState(false)
 
     useEffect(()=>{
-        if(Object.keys(DefaultData.LimitedWorkingStillsData).length===0){
+        if(!Array.isArray(DefaultData.LimitedWorkingStillsData) || DefaultData.LimitedWorkingStillsData.length===0){
             setLoading(true)
             const FetchData=async()=>{
                 const  data=await getLimitedWorkingStills(1)
@@ -33,11 +36,19 @@ const Events =(props)=>  {
         return (
             <div className={`container ${Style.maincomponent}`}>
 
+                <PageHeader
+                    title="Working Stills"
+                    parent="Gallery"
+                    subtitle="Behind the scenes, straight from the set"
+                    icon={<CameraRollIcon style={{ fontSize: 26 }} />}
+                />
+
+
                   {
-                   (Object.keys(DefaultData.LimitedWorkingStillsData).length!==0 && Loading==false)&&
+                   (Array.isArray(DefaultData.LimitedWorkingStillsData) && DefaultData.LimitedWorkingStillsData.length>0 && Loading===false)&&
                    <div className={Style.outerBox}>
                        {DefaultData.LimitedWorkingStillsData.map(ele=>{
-                           return <div key={ele._id} className={Style.innerBox} onClick={()=>clickHandler(ele)}>
+                           return <div key={ele._id} className={`${Style.innerBox} ${Style.tagStills}`} onClick={()=>clickHandler(ele)}>
 
                                   <div className={Style.imageHead}>
                                   <img src={ele.thumbnail}/>
@@ -53,6 +64,14 @@ const Events =(props)=>  {
                    </div>
   
                   }
+
+                  {!(Array.isArray(DefaultData.LimitedWorkingStillsData) && DefaultData.LimitedWorkingStillsData.length > 0) && (
+                      <div className={Style.eleHead}>
+                          {[0, 1, 2, 3, 4, 5, 6, 7].map(i => (
+                              <div className={Style.eleHeadinner} key={i}><Backdrop /></div>
+                          ))}
+                      </div>
+                  )}
             </div>
         )
     }

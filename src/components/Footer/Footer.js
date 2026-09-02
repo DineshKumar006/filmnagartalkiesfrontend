@@ -1,155 +1,137 @@
-import React, { Component } from 'react';
-import Style from './Footer.module.css'
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import PinterestIcon from '@material-ui/icons/Pinterest';
-import { red ,blue } from '@material-ui/core/colors';
-import Logo from '../../#images/FNT_logo.jpg';
-import FNT_logoMain from '../../#images/FNT_logoMain.png'
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import MovieFilterIcon from '@material-ui/icons/MovieFilter';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
-// import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
-// import { borderRadius } from '@material-ui/system';
+import Style from './Footer.module.css';
+import FNT_logoMain from '../../#images/FNT_logoMain.png';
+import fallbackArt from '../../#images/bg.jpg';
 
-const Footer =()=>  {
+const PRIMARY_LINKS = [
+    { label: 'Reviews', to: '/Reviews' },
+    { label: 'Interviews', to: '/Interviews' },
+    { label: 'Teasers', to: '/Teasers' },
+    { label: 'Trailers', to: '/Trailers' },
+    { label: 'Songs', to: '/Songs' }
+];
 
+const SECONDARY_LINKS = [
+    { label: 'General News', to: '/generalNews' },
+    { label: 'Film News', to: '/filmNews' },
+    { label: 'Photoshoots', to: '/Photoshoots' },
+    { label: 'Events', to: '/Events' },
+    { label: 'Working Stills', to: '/Workingstills' }
+];
 
-    const instaclick=()=>{
-        window.open("https://www.instagram.com/filmnagartalkies/","_blank")
-    }
+const Footer = () => {
 
-    const youtubeclick=()=>{
-        window.open("https://www.youtube.com/channel/UCqx_Q4C00mY6pTU0QD40mHQ","_blank")
-    }
+    const history = useHistory();
+    const teasers = useSelector(state => state.DefaultData.LimitedTeasersData);
+    const [spotlight, setSpotlight] = useState(0);
 
-    const facebookclick=()=>{
-        window.open("https://www.facebook.com/filmnagartalkies/","_blank")
-    }
+    const list = Array.isArray(teasers) ? teasers : [];
+    const current = list.length > 0 ? list[spotlight % list.length] : null;
 
-    const pinterestclick=()=>{
-        window.open("https://in.pinterest.com/filmnagartalkies/","_blank")
-    }
+    const step = (direction) => {
+        if (list.length === 0) return;
+        setSpotlight(prev => (prev + direction + list.length) % list.length);
+    };
 
-    const twitterclick=()=>{
-        window.open("https://twitter.com/filmnagartalkie","_blank")
+    const open = (url) => window.open(url, "_blank");
 
-    }
+    return (
+        <footer className={Style.footer} id="aboutus">
 
-        return (
-            // <div className={Style.mainHeader}>
+            <div className={`container ${Style.inner}`}>
 
-                <div className={`${Style.contactusheader} `} id="aboutus">
+                <div className={Style.brandRow}>
+                    <div className={Style.logoBox}>
+                        <img src={FNT_logoMain} alt="Film Nagar Talkies" />
+                    </div>
+                    <span className={Style.wordmark}>FILM NAGAR TALKIES</span>
+                </div>
 
-                     <div className={Style.logo2}>
+                <div className={Style.grid}>
 
-                        <div className={Style.logoinner}>
-                        <img src={FNT_logoMain}  />
+                    <div className={Style.ctaColumn}>
+                        <button className={Style.ctaCard} onClick={() => open("https://www.instagram.com/filmnagartalkies/")}>
+                            <InstagramIcon style={{ fontSize: 26 }} className={Style.ctaIcon} />
+                            <span>Visit our Page on Instagram</span>
+                        </button>
+
+                        <button className={Style.ctaCard} onClick={() => open("https://www.youtube.com/channel/UCqx_Q4C00mY6pTU0QD40mHQ")}>
+                            <YouTubeIcon style={{ fontSize: 26 }} className={Style.ctaIcon} />
+                            <span>Watch us on YouTube</span>
+                        </button>
+
+                        <div className={Style.socialRow}>
+                            <span onClick={() => open("https://www.facebook.com/filmnagartalkies/")}><FacebookIcon style={{ fontSize: 20 }} /></span>
+                            <span onClick={() => open("https://twitter.com/filmnagartalkie")}><TwitterIcon style={{ fontSize: 20 }} /></span>
+                            <span onClick={() => open("https://in.pinterest.com/filmnagartalkies/")}><PinterestIcon style={{ fontSize: 20 }} /></span>
                         </div>
-
-                        <p>
-                            <span className={Style.span1}>
-                            FILM NAGAR TALKIES
-                            </span>
-                            {/* <span className={Style.span2}>
-                            TALKIES
-                            </span> */}
-                            
-                        </p>
-                     </div>
-
-                    <div  className={Style.aboutus2}>
-                        <span className={Style.title}>About us</span>
-                        <p className={Style.aboutusPara}>Film Nagar Talkies Digital Media Company is all about Telugu Cinema updates,
-                             Movie Promotions, Exclusive Interviews,Celebrities,
-                            Brand  Promotions,Short Films and Content Creation !</p>
-
-                        <p className={Style.contactus}>
-                            Contactus: <span>filmnagartalkies@gmail.com</span>
-                            </p>
-
                     </div>
 
-                      <div className= {Style.followus2}>
-                        <ul >
-                            <p className={Style.title}>Follow on</p>
+                    <div className={Style.linkColumn}>
+                        {PRIMARY_LINKS.map(link => (
+                            <span key={link.to} onClick={() => history.push(link.to)}>{link.label}</span>
+                        ))}
+                    </div>
 
-                            <div className={Style.followuslogo}>
+                    <div className={Style.linkColumn}>
+                        {SECONDARY_LINKS.map(link => (
+                            <span key={link.to} onClick={() => history.push(link.to)}>{link.label}</span>
+                        ))}
+                    </div>
 
-                            <li onClick={instaclick}><InstagramIcon style={{fontSize:25 ,color:red[500]}}/></li>
-                            <li onClick={facebookclick}><FacebookIcon style={{fontSize:25 , color:blue[500]}}/></li>
-                            <li onClick={youtubeclick}><YouTubeIcon style={{fontSize:25, color:red[500]}}/></li>
-                            <li onClick={twitterclick}><TwitterIcon style={{fontSize:25,  color:blue[500]}}/></li>
-                            <li onClick={pinterestclick}><PinterestIcon style={{fontSize:25, color:red[500]}}/></li>
+                    <div className={Style.spotlightColumn}>
+                        <div
+                            className={Style.spotlightCard}
+                            onClick={() => current && history.push(`/TeaserDetail/${current._id}`)}
+                        >
+                            <img src={current ? current.thumbnail : fallbackArt} alt={current ? current.moviename : 'Film Nagar Talkies'} />
+                            <div className={Style.spotlightShade} />
+                            <div className={Style.spotlightBody}>
+                                <div className="fnt-chip-row">
+                                    <span className="fnt-chip"><MenuBookIcon style={{ fontSize: 13 }} /> Teaser</span>
+                                    <span className="fnt-chip"><MovieFilterIcon style={{ fontSize: 13 }} /> Latest Release</span>
+                                </div>
+                                <p className={Style.spotlightTitle}>
+                                    {current ? current.moviename : 'Telugu cinema, every day'}
+                                </p>
                             </div>
-                            
+                        </div>
 
-                        </ul>
-                     </div>  
-
-
+                        <div className={Style.spotlightNav}>
+                            <button onClick={() => step(-1)} aria-label="Previous"><ArrowBackIcon style={{ fontSize: 18 }} /></button>
+                            <button onClick={() => step(1)} aria-label="Next"><ArrowForwardIcon style={{ fontSize: 18 }} /></button>
+                        </div>
+                    </div>
 
                 </div>
-          
-        );
-    }
 
+                <p className={Style.about}>
+                    Film Nagar Talkies Digital Media Company is all about Telugu Cinema updates, movie promotions,
+                    exclusive interviews, celebrities, brand promotions, short films and content creation.
+                    <span className={Style.mail}> filmnagartalkies@gmail.com</span>
+                </p>
+
+            </div>
+
+            <div className={Style.legal}>
+                All intellectual and material rights of this website are reserved. Any form of reproduction will be legally pursued.
+            </div>
+
+        </footer>
+    );
+};
 
 export default Footer;
-
-
-
-
-
-
-// <div  className={Style.logo}>
-// {/* <div className={Style.logoinner}>
-// <img src={Logo}  />
-//  </div>
-
-//  <p>
-//     <span className={Style.span1}>
-//     FILMNAGAR-
-//     </span>
-//     <span className={Style.span2}>
-//     Talkies
-//     </span>
-    
-//  </p>
-//     */}
-
-// </div>
-
-
-
-// <div  className={Style.aboutus}>
-// {/* <span className={Style.title}>About us</span>
-
-// <p className={Style.aboutusPara}>Film Nagar Talkies Digital Media Company is all about Telugu Cinema updates,
-//      Movie Promotions, Exclusive Interviews,Celebrities,
-//      Brand  Promotions,Short Films and Content Creation !</p>
-
-//  <p className={Style.contactus}>
-//      Contactus: <span>filmnagartalkies@gmail.com</span>
-//      </p> */}
-
-// </div>
-
-
-
-
-    // {/* <ul className= {Style.followus}>
-    //     <p className={Style.title}>Follow on</p>
-
-    //     <div className={Style.followuslogo}>
-
-    //     <li onClick={instaclick}><InstagramIcon style={{fontSize:25 ,color:red[500]}}/></li>
-    //     <li onClick={facebookclick}><FacebookIcon style={{fontSize:25 , color:blue[500]}}/></li>
-    //     <li onClick={youtubeclick}><YouTubeIcon style={{fontSize:25, color:red[500]}}/></li>
-    //     <li onClick={twitterclick}><TwitterIcon style={{fontSize:25,  color:blue[500]}}/></li>
-    //     <li onClick={pinterestclick}><PinterestIcon style={{fontSize:25, color:red[500]}}/></li>
-    //     </div>
-        
-
-    // </ul> */}

@@ -1,5 +1,8 @@
 import React, { Component, useEffect, useState } from 'react'
 import Style from '../defaultStyle.module.css';
+import PageHeader from '../../../UIElements/PageHeader/PageHeader'
+import Backdrop from '../../../UIElements/backdrop/Backdrop'
+import MusicNoteIcon from '@material-ui/icons/MusicNote'
 import { getLimitedPhotos } from "../../controllers/FetchData/FetchData";
 
 import { getLimitedSongsAlbums } from "../../controllers/FetchData/FetchData";
@@ -17,7 +20,7 @@ const Albums =(props)=>  {
     const [Loading,setLoading]=useState(false)
     // LimitedAlbumsData
     useEffect(()=>{
-        if(Object.keys(DefaultData.LimitedAlbumsData).length===0){
+        if(!Array.isArray(DefaultData.LimitedAlbumsData) || DefaultData.LimitedAlbumsData.length===0){
             setLoading(true)
             const FetchData=async()=>{
                 const  data=await getLimitedSongsAlbums(1)
@@ -37,8 +40,16 @@ const Albums =(props)=>  {
         return (
             <div className={`container ${Style.maincomponent}`}>
 
+                <PageHeader
+                    title="Songs"
+                    parent="Latest Release"
+                    subtitle="Full album playlists from the newest releases"
+                    icon={<MusicNoteIcon style={{ fontSize: 26 }} />}
+                />
+
+
                   {
-                   (Object.keys(DefaultData.LimitedAlbumsData).length!==0 && Loading==false)&&
+                   (Array.isArray(DefaultData.LimitedAlbumsData) && DefaultData.LimitedAlbumsData.length>0 && Loading===false)&&
                    <div className={Style.outerBox}>
                        {DefaultData.LimitedAlbumsData.map(ele=>{
                            return <div key={ele._id} className={`${Style.innerBox} ${"defaultStyle"}`} onClick={()=>clickHandler(ele)}>
@@ -59,6 +70,14 @@ const Albums =(props)=>  {
                    </div>
   
                   }
+
+                  {!(Array.isArray(DefaultData.LimitedAlbumsData) && DefaultData.LimitedAlbumsData.length > 0) && (
+                      <div className={Style.eleHead}>
+                          {[0, 1, 2, 3, 4, 5, 6, 7].map(i => (
+                              <div className={Style.eleHeadinner} key={i}><Backdrop /></div>
+                          ))}
+                      </div>
+                  )}
             </div>
         )
     }

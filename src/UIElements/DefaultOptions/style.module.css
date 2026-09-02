@@ -1,13 +1,12 @@
-.main{
-    width: 200px;
-    min-height: 250px;
-    background-color: black;
-    opacity: 0.3;
+/* Dropdown panel shared by every nav menu. */
+.main {
+    min-width: 210px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius: 5px;
-    opacity: 0.9;
-
+    gap: 2px;
+    background: var(--fnt-bg-elev);
+    border: 1px solid var(--fnt-line);
+    border-radius: var(--fnt-r-md);
+    box-shadow: var(--fnt-shadow);
 }

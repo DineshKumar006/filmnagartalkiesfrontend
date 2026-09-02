@@ -47,7 +47,7 @@ const ReviewDetails =(props)=> {
 
                               <div className={Style.description}>
                               <p> <span className={Style.span1}>{reviewStateData.reviewData.review.slice(0,1)}</span>
-                               <span className={Style.span2}>{reviewStateData.reviewData.review} </span></p>
+                               <span className={Style.span2}>{reviewStateData.reviewData.review.slice(1)} </span></p>
                               </div>
 
                             </div>                         

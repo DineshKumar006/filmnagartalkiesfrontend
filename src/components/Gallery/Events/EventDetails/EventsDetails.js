@@ -5,6 +5,7 @@ import {addEventDetailsDataById} from '../../../../ReduxStore/Actions/DefaultAct
 
 import Style from './EventsDetails.module.css'
 import Backdrop from '../../../../UIElements/backdrop/Backdrop'
+import { toEmbedUrl } from '../../../../UIElements/utils/youtube'
 
 const EventsDetails =(props)=> {
     const defaultDetailsData=useSelector(state=>state.DefaultDetailsData)
@@ -77,19 +78,20 @@ const EventsDetails =(props)=> {
 
 
 
-                    <div className={Style.video}>
-                                <iframe 
+                    {toEmbedUrl(defaultDetailsData.EventDetailsData.youtubelink) && (
+                        <div className={Style.video}>
+                            <iframe
                                 className={Style.videoEle}
-                               
-                                src={defaultDetailsData.EventDetailsData.youtubelink}
+                                title="Video player"
+                                src={toEmbedUrl(defaultDetailsData.EventDetailsData.youtubelink)}
                                 frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
-                                name="my video"
                                 loading="lazy"
-                                />
-                                <button onClick={()=>{}}>Watch on Youtube</button>
-                    </div>
+                            />
+                            <button onClick={() => window.open(defaultDetailsData.EventDetailsData.youtubelink, "_blank")}>Watch on Youtube</button>
+                        </div>
+                    )}
 
             
                  </div>

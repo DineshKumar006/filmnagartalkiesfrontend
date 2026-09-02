@@ -1,52 +1,136 @@
-.maincomponent{
-    /* border: 1px solid red; */
-    min-height: 100vh;
+/* Shared layout for every Gallery listing (photoshoots, actors, events, stills). */
+
+.maincomponent {
+    min-height: 70vh;
+    padding-bottom: 72px;
 }
 
-.outerBox{
-    /* border: 1px solid red; */
+.outerBox {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 26px;
     width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+}
+
+/* ---------- card ---------- */
+.innerBox {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    min-height: 300px;
+    border-radius: var(--fnt-r-lg);
     overflow: hidden;
-
+    background: var(--fnt-surface);
+    box-shadow: var(--fnt-shadow-sm);
+    cursor: pointer;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
 
-
-.innerBox{
-    /* border: 1px solid rgb(158, 158, 158); */
-    box-shadow: 0px 0px 5px 0px black;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 350px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-
+.innerBox:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--fnt-shadow);
 }
-.innerBox .imageHead{
+
+.innerBox .imageHead {
+    position: absolute;
+    inset: 0;
     overflow: hidden;
-    width: 350px;
-    height:85%;
 }
 
-.innerBox img{
+.innerBox img {
     width: 100%;
     height: 100%;
-}
-.innerBox img:hover{
-    transform: scale(1.1);
-    transition-duration: 1s;
+    object-fit: cover;
+    transition: transform 0.6s ease;
 }
 
-.innerBox p{
-    font-size: larger;
-    letter-spacing: 1px;
-    color: grey;
-    /* border: 1px solid red; */
+.innerBox:hover img {
+    transform: scale(1.06);
+}
+
+/* readability shade under the title */
+.innerBox::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.55) 0%,
+            rgba(0, 0, 0, 0.05) 32%,
+            rgba(0, 0, 0, 0.55) 68%,
+            rgba(0, 0, 0, 0.92) 100%);
+    pointer-events: none;
+}
+
+/* category chip, top-left — label set by the modifier classes below */
+.innerBox::before {
+    content: 'Gallery';
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    padding: 5px 12px;
+    border-radius: var(--fnt-r-pill);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(18, 18, 20, 0.68);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+.innerBox p {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    z-index: 3;
+    margin: 0;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.1px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ---------- per-screen chip labels ---------- */
+.tagPhotoshoot::before { content: 'Photoshoot'; }
+.tagActor::before      { content: 'Actor'; }
+.tagActress::before    { content: 'Actress'; }
+.tagEvent::before      { content: 'Event'; }
+.tagStills::before     { content: 'Working Stills'; }
+
+/* ---------- skeletons ---------- */
+.eleHead {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 26px;
     width: 100%;
-    height: 14%;
+}
+
+.eleHeadinner {
+    width: 100%;
+}
+
+@media (max-width: 560px) {
+    .outerBox,
+    .eleHead {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 16px;
+    }
+
+    .innerBox {
+        min-height: 220px;
+    }
+
+    .innerBox p {
+        font-size: 14px;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+    }
 }

@@ -4,6 +4,8 @@ import {getLimitedTeasers } from "../../controllers/FetchData/FetchData";
 import {useSelector,useDispatch} from 'react-redux'
 import { TeasersData,TeasersDetail} from '../../../ReduxStore/Actions/TeasersActions';
 import Style from './Teasers.module.css';
+import PageHeader from '../../../UIElements/PageHeader/PageHeader';
+import MovieFilterIcon from '@material-ui/icons/MovieFilter';
 import Backdrop from '../../../UIElements/backdrop/Backdrop';
 
 const Teasers =(props)=> {
@@ -61,10 +63,14 @@ const moveToTeaserDetailHandler=(data)=>{
 }
 
         return (
-            <div>
-                <h2 className={Style.titleHead}>Teasers</h2>
+            <div className={`container ${Style.head}`}>
 
-            <div className={`container-fluid ${Style.head}`}>
+            <PageHeader
+                title="Teasers"
+                parent="Latest Release"
+                subtitle="Fresh teaser cuts, straight from the studios"
+                icon={<MovieFilterIcon style={{ fontSize: 26 }} />}
+            />
 
             {
             
@@ -107,12 +113,6 @@ const moveToTeaserDetailHandler=(data)=>{
             }
 
 
-
-                  <div className={Style.suggestion}>
-                        hey
-                  </div>
-            
-            </div>
 
             </div>
 

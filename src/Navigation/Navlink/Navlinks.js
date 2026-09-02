@@ -1,137 +1,94 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom';
-import MainNavbar from '../../UIElements/MainNavbar/MainNavbar';
-import Style from "./Navlink.module.css";
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'; 
-import CinemaOptions from './CinemaOptions/CinemaOptions';
-import GallaryOptions from './GalleryOptions/GallaryOptions';
-import NewsOptions from './NewsOptions/NewsOptions';
-import LatestReleaseOptions from './LatestRelease/LatestRelease';
+import { NavLink, useHistory } from 'react-router-dom'
+import { Link } from 'react-scroll'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import SearchIcon from '@material-ui/icons/Search'
+import PersonOutlineIcon from '@material-ui/icons/PersonOutline'
+
+import Style from './Navlink.module.css'
+import CinemaOptions from './CinemaOptions/CinemaOptions'
+import GallaryOptions from './GalleryOptions/GallaryOptions'
+import NewsOptions from './NewsOptions/NewsOptions'
+import LatestReleaseOptions from './LatestRelease/LatestRelease'
 import HamBurger from '../../UIElements/hamBurger/HamBurger'
-import {red,grey} from '@material-ui/core/colors'
 import FNT_logoMain from '../../#images/FNT_logoMain.png'
-import {useHistory} from 'react-router-dom'
-import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
-const  NavlinksComponent =(props)=>  {
+const NavlinksComponent = () => {
 
-    const history=useHistory()
-    const navigateHandler=()=>{
+    const history = useHistory()
+    const [query, setQuery] = useState('')
+
+    const navigateHandler = () => {
         history.push('/')
     }
-    
-    const [openOptions,setOpenOptions]=useState(false)
 
+    return (
+        <header className={Style.navShell}>
+            <div className={`container ${Style.navInner}`}>
 
-
-    const renderSearchComponent=()=>{
-        return(
-            <div className={` ${Style.searchBar}`}>
-            <input type="text" placeholder="Search Your Like"  className={'container'}/>
-        </div>
-        )
-    }
-        return (
-
-            <div className={`container ${Style.Head}`}>
-
-           
-            <div className={` ${Style.NavlinkHead}`}>
-
-                <div className={Style.Mainlogo}>
-                        <img src={FNT_logoMain} onClick={navigateHandler} />
+                <div className={Style.burger}>
+                    <HamBurger />
                 </div>
 
-                <div className={Style.HamBurger}>
-                    <HamBurger/>
+                <nav className={Style.links}>
+                    <NavLink to='/' exact={true} activeClassName={Style.active}>Home</NavLink>
+
+                    <span className={Style.dropdown}>
+                        News
+                        <ExpandMoreIcon style={{ fontSize: 16 }} />
+                        <div className={Style.dropdownPanel}>
+                            <NewsOptions />
+                        </div>
+                    </span>
+
+                    <NavLink to='/Reviews' exact={true} activeClassName={Style.active}>Reviews</NavLink>
+                    <NavLink to='/Interviews' exact={true} activeClassName={Style.active}>Interviews</NavLink>
+
+                    <span className={Style.dropdown}>
+                        Latest Release
+                        <ExpandMoreIcon style={{ fontSize: 16 }} />
+                        <div className={Style.dropdownPanel}>
+                            <LatestReleaseOptions />
+                        </div>
+                    </span>
+
+                    <span className={Style.dropdown}>
+                        Gallery
+                        <ExpandMoreIcon style={{ fontSize: 16 }} />
+                        <div className={Style.dropdownPanel}>
+                            <GallaryOptions />
+                        </div>
+                    </span>
+
+                    <Link to='aboutus' activeClass={Style.active} hashSpy={true} spy={true}
+                        smooth={true} offset={-10} duration={500} className={Style.scrollLink}>
+                        About us
+                    </Link>
+                </nav>
+
+                <div className={Style.logo} onClick={navigateHandler}>
+                    <img src={FNT_logoMain} alt="Film Nagar Talkies" />
                 </div>
 
-       <div className={` ${Style.navlinksElement}`}>
+                <div className={Style.actions}>
+                    <div className={Style.search}>
+                        <SearchIcon style={{ fontSize: 18 }} className={Style.searchIcon} />
+                        <input
+                            type="text"
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
+                            placeholder="What are you looking for?"
+                        />
+                    </div>
 
-                <MainNavbar>
-               <NavLink to='/' activeClassName={Style.active} exact={true}> Home  </NavLink>
-
-
-               <span className={Style.optionStyle}>
-                            News    
-                        <ArrowDropDownIcon style={{fontSize:15}}/>
-
-
-                        <div className={Style.inneroptionStyle}>
-
-                        <p className={Style.dropdonwArrow}> <ArrowDropDownIcon style={{fontSize:30,color:grey[900]}}/></p>
-
-                           <NewsOptions/>
-                        </div>
-                </span>
-
-
-               
-                   
-
-               <NavLink to='/Reviews' exact={true} activeClassName={Style.active}> Reviews  </NavLink>
-               <NavLink to='/Interviews' exact={true} activeClassName={Style.active}> Interviews  </NavLink>
-       
-
-                   <span className={Style.cinema}>
-                        Latest Release    
-                        <ArrowDropDownIcon style={{fontSize:15}}/>
-
-                        <div className={Style.cinemaOptions}>
-                        <p className={Style.dropdonwArrow}> <ArrowDropDownIcon style={{fontSize:30,color:grey[900]}}/></p>
-
-                           <LatestReleaseOptions/>
-                        </div>
-                   </span>
-
-
-               <span className={Style.gallary}>
-                          Gallery    
-                        <ArrowDropDownIcon style={{fontSize:15}}/>
-
-                        <div className={Style.gallaryOptions}>
-                        <p className={Style.dropdonwArrow}> <ArrowDropDownIcon style={{fontSize:30,color:grey[900]}}/></p>
-
-                           <GallaryOptions/>
-                        </div>
-                   </span>
-
-
-                   
-
-               {/* <span className={Style.gallary}>
-                          Audio Book    
-                        <ArrowDropDownIcon style={{fontSize:15}}/>
-
-                         <div className={Style.gallaryOptions}>
-                        <p className={Style.dropdonwArrow}> <ArrowDropDownIcon style={{fontSize:30,color:grey[900]}}/></p>
-
-                           <GallaryOptions/>
-                        </div> 
-                   </span> */}
-
-                   <span className={Style.gallary}>
-                          Apps     
-                        <ArrowDropDownIcon style={{fontSize:15}}/>
-
-                   </span>
-
-                   {/* activeClass={Style.active} hashSpy={true} to="shop_by_brand" spy={true}  smooth={true} offset={-100}  duration={500}  */}
-
-               <Link to='aboutus'  activeClass={Style.active}
-                hashSpy={true}  spy={true}  smooth={true} offset={-10}  duration={500}> About us  </Link>
-               </MainNavbar>
-               </div>
-
-              
-             </div>
-
-
-             {renderSearchComponent()}
+                    <div className={Style.avatar}>
+                        <PersonOutlineIcon style={{ fontSize: 22 }} />
+                    </div>
+                </div>
 
             </div>
-        )
-    
+        </header>
+    )
 }
 
 export default NavlinksComponent

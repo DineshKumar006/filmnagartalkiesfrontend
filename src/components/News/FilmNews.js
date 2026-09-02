@@ -1,5 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import Style from './newsStyle.module.css'
+import PageHeader from '../../UIElements/PageHeader/PageHeader'
+import MovieFilterIcon from '@material-ui/icons/MovieFilter'
 import {getLimitedFilmnews} from '../controllers/FetchData/FetchData'
 
 
@@ -15,7 +17,7 @@ const  FilmNews =(props)=>  {
     const DefaultData=useSelector(state=>state.DefaultData)
 
     useEffect(()=>{
-        if(Object.keys(DefaultData.LimitedFilmNewsData).length===0){
+        if(!Array.isArray(DefaultData.LimitedFilmNewsData) || DefaultData.LimitedFilmNewsData.length===0){
             setLoading(true)
             const FetchData=async()=>{
                 const  data=await getLimitedFilmnews(1)
@@ -36,8 +38,16 @@ const  FilmNews =(props)=>  {
         return (
             <div className={`container ${Style.maincomponent}`}>
 
+            <PageHeader
+                title="Film News"
+                parent="News"
+                subtitle="Everything moving in Tollywood right now"
+                icon={<MovieFilterIcon style={{ fontSize: 26 }} />}
+            />
+
+
             {
-             (Object.keys(DefaultData.LimitedFilmNewsData).length!==0 && Loading==false)?
+             (Array.isArray(DefaultData.LimitedFilmNewsData) && DefaultData.LimitedFilmNewsData.length>0 && Loading===false)?
 
              <div className={Style.outerBox}>
                  {DefaultData.LimitedFilmNewsData.map(ele=>{

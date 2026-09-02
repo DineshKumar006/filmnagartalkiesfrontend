@@ -6,6 +6,7 @@
     
     import Style from './InterviewsDetailsStyle.module.css'
     import Backdrop from '../../UIElements/backdrop/Backdrop'
+import { toEmbedUrl } from '../../UIElements/utils/youtube'
     
     const InterviewDetailsComponent =(props)=> {
     
@@ -87,19 +88,20 @@
     
     
     
-                        <div className={Style.video}>
-                                    <iframe 
+                        {toEmbedUrl(defaultDetailsData.InterviewsDetailsData.youtubelink) && (
+                            <div className={Style.video}>
+                                <iframe
                                     className={Style.videoEle}
-                                   
-                                    src={defaultDetailsData.InterviewsDetailsData.youtubelink}
+                                    title="Video player"
+                                    src={toEmbedUrl(defaultDetailsData.InterviewsDetailsData.youtubelink)}
                                     frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen
-                                    name="my video"
                                     loading="lazy"
-                                    />
-                                    <button onClick={()=>{}}>Watch on Youtube</button>
-                        </div>
+                                />
+                                <button onClick={() => window.open(defaultDetailsData.InterviewsDetailsData.youtubelink, "_blank")}>Watch on Youtube</button>
+                            </div>
+                        )}
     
                 
                      </div>

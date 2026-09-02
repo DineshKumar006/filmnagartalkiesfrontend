@@ -1,5 +1,8 @@
 import React, { Component, useEffect, useState } from 'react'
 import Style from '../defaultStyle.module.css';
+import PageHeader from '../../../UIElements/PageHeader/PageHeader'
+import Backdrop from '../../../UIElements/backdrop/Backdrop'
+import EventIcon from '@material-ui/icons/Event'
 import { getLimitedEvents } from "../../controllers/FetchData/FetchData";
 
 import {addEventDetailsDataById,addEventDataHandler} from '../../../ReduxStore/Actions/DefaultActions'
@@ -13,7 +16,7 @@ const Events =(props)=>  {
     const [Loading,setLoading]=useState(false)
 
     useEffect(()=>{
-        if(Object.keys(DefaultData.LimitedEventsData).length===0){
+        if(!Array.isArray(DefaultData.LimitedEventsData) || DefaultData.LimitedEventsData.length===0){
             setLoading(true)
             const FetchData=async()=>{
                 const  data=await getLimitedEvents(1)
@@ -33,11 +36,19 @@ const Events =(props)=>  {
         return (
             <div className={`container ${Style.maincomponent}`}>
 
+                <PageHeader
+                    title="Events"
+                    parent="Gallery"
+                    subtitle="Launches, audio nights and red carpets"
+                    icon={<EventIcon style={{ fontSize: 26 }} />}
+                />
+
+
                   {
-                   (Object.keys(DefaultData.LimitedEventsData).length!==0 && Loading==false)&&
+                   (Array.isArray(DefaultData.LimitedEventsData) && DefaultData.LimitedEventsData.length>0 && Loading===false)&&
                    <div className={Style.outerBox}>
                        {DefaultData.LimitedEventsData.map(ele=>{
-                           return <div key={ele._id} className={Style.innerBox} onClick={()=>clickHandler(ele)}>
+                           return <div key={ele._id} className={`${Style.innerBox} ${Style.tagEvent}`} onClick={()=>clickHandler(ele)}>
 
                                   <div className={Style.imageHead}>
                                   <img src={ele.thumbnail}/>
@@ -53,6 +64,14 @@ const Events =(props)=>  {
                    </div>
   
                   }
+
+                  {!(Array.isArray(DefaultData.LimitedEventsData) && DefaultData.LimitedEventsData.length > 0) && (
+                      <div className={Style.eleHead}>
+                          {[0, 1, 2, 3, 4, 5, 6, 7].map(i => (
+                              <div className={Style.eleHeadinner} key={i}><Backdrop /></div>
+                          ))}
+                      </div>
+                  )}
             </div>
         )
     }

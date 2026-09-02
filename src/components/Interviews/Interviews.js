@@ -1,5 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import Style from './InterviewsStyle.module.css'
+import PageHeader from '../../UIElements/PageHeader/PageHeader'
+import MicIcon from '@material-ui/icons/Mic'
 import {getLimitedInterviews} from '../controllers/FetchData/FetchData'
 
 
@@ -15,7 +17,7 @@ const  InterViews =(props)=>  {
     const DefaultData=useSelector(state=>state.DefaultData)
 
     useEffect(()=>{
-        if(Object.keys(DefaultData.LimitedInterviewsData).length===0){
+        if(!Array.isArray(DefaultData.LimitedInterviewsData) || DefaultData.LimitedInterviewsData.length===0){
             setLoading(true)
             const FetchData=async()=>{
                 const  data=await getLimitedInterviews(1)
@@ -36,8 +38,15 @@ const  InterViews =(props)=>  {
         return (
             <div className={`container ${Style.maincomponent}`}>
 
+            <PageHeader
+                title="Interviews"
+                subtitle="Exclusive conversations with cast and crew"
+                icon={<MicIcon style={{ fontSize: 26 }} />}
+            />
+
+
             {
-             (Object.keys(DefaultData.LimitedInterviewsData).length!==0 && Loading==false)?
+             (Array.isArray(DefaultData.LimitedInterviewsData) && DefaultData.LimitedInterviewsData.length>0 && Loading===false)?
 
              <div className={Style.outerBox}>
                  {DefaultData.LimitedInterviewsData.map(ele=>{

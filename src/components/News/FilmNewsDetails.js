@@ -6,6 +6,7 @@ import {addEventDetailsDataById,addFilmNewsDetailsDataById} from '../../ReduxSto
 
 import Style from './newsDetailsStyle.module.css'
 import Backdrop from '../../UIElements/backdrop/Backdrop'
+import { toEmbedUrl } from '../../UIElements/utils/youtube'
 
 const FilmNewsDetailsComponent =(props)=> {
 
@@ -89,19 +90,20 @@ const FilmNewsDetailsComponent =(props)=> {
 
 
 
-                    <div className={Style.video}>
-                                <iframe 
+                    {toEmbedUrl(defaultDetailsData.FilmNewsDetailsData.youtubelink) && (
+                        <div className={Style.video}>
+                            <iframe
                                 className={Style.videoEle}
-                               
-                                src={defaultDetailsData.FilmNewsDetailsData.youtubelink}
+                                title="Video player"
+                                src={toEmbedUrl(defaultDetailsData.FilmNewsDetailsData.youtubelink)}
                                 frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
-                                name="my video"
                                 loading="lazy"
-                                />
-                                <button onClick={()=>{}}>Watch on Youtube</button>
-                    </div>
+                            />
+                            <button onClick={() => window.open(defaultDetailsData.FilmNewsDetailsData.youtubelink, "_blank")}>Watch on Youtube</button>
+                        </div>
+                    )}
 
             
                  </div>

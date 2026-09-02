@@ -1,0 +1,351 @@
+/* ==========================================================================
+   FILM NAGAR TALKIES — design system
+   Dark cinema theme: charcoal surfaces, amber accent, soft rounded cards.
+   Every screen pulls its colours, radii and type from the tokens below.
+   ========================================================================== */
+
+:root {
+    /* surfaces */
+    --fnt-bg: #171718;
+    --fnt-bg-elev: #1f1f21;
+    --fnt-surface: #262628;
+    --fnt-surface-2: #2f2f33;
+    --fnt-nav: #3a3a3c;
+
+    /* lines */
+    --fnt-line: rgba(255, 255, 255, 0.10);
+    --fnt-line-strong: rgba(255, 255, 255, 0.20);
+
+    /* text */
+    --fnt-text: #f3f3f4;
+    --fnt-text-dim: #b6b6ba;
+    --fnt-text-mute: #86868c;
+
+    /* accent */
+    --fnt-accent: #e9a13b;
+    --fnt-accent-hi: #f5bb63;
+    --fnt-accent-soft: rgba(233, 161, 59, 0.14);
+    --fnt-crimson: #7d1d1d;
+
+    /* geometry */
+    --fnt-r-lg: 20px;
+    --fnt-r-md: 14px;
+    --fnt-r-sm: 10px;
+    --fnt-r-pill: 999px;
+
+    /* elevation */
+    --fnt-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    --fnt-shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.35);
+
+    /* type */
+    --fnt-font: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+    /* layout */
+    --fnt-nav-h: 72px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--fnt-bg);
+    color: var(--fnt-text);
+    font-family: var(--fnt-font);
+    font-size: 15px;
+    line-height: 1.55;
+    letter-spacing: 0.1px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--fnt-font);
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    color: var(--fnt-text);
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    font-family: var(--fnt-font);
+    cursor: pointer;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--fnt-line);
+    margin: 32px 0;
+}
+
+/* Bootstrap's .container is used all over the app — widen and pad it. */
+.container,
+.container-fluid {
+    max-width: 1320px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+/* ---------- scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--fnt-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3d3d40;
+    border-radius: var(--fnt-r-pill);
+    border: 2px solid var(--fnt-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4d4d51;
+}
+
+/* ==========================================================================
+   Shared building blocks (global classes — usable from any screen)
+   ========================================================================== */
+
+/* ---------- page frame ---------- */
+.fnt-page {
+    min-height: 70vh;
+    padding: 8px 0 72px;
+}
+
+/* ---------- breadcrumb ---------- */
+.fnt-crumbs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--fnt-text-dim);
+    padding: 18px 0 22px;
+}
+
+.fnt-crumbs .fnt-crumb-sep {
+    color: var(--fnt-text-mute);
+    font-size: 16px;
+    line-height: 1;
+}
+
+.fnt-crumbs .fnt-crumb-current {
+    color: var(--fnt-accent);
+    font-weight: 600;
+}
+
+.fnt-crumbs a:hover {
+    color: var(--fnt-text);
+}
+
+/* ---------- section heading ---------- */
+.fnt-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+}
+
+.fnt-section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--fnt-accent);
+    letter-spacing: -0.4px;
+}
+
+.fnt-section-title svg {
+    color: var(--fnt-accent);
+}
+
+.fnt-section-sub {
+    color: var(--fnt-text-mute);
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+/* ---------- pills / filters ---------- */
+.fnt-pills {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.fnt-pill {
+    padding: 10px 22px;
+    border-radius: var(--fnt-r-md);
+    border: 1px solid var(--fnt-line-strong);
+    background: transparent;
+    color: var(--fnt-text-mute);
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.fnt-pill:hover {
+    color: var(--fnt-text);
+    border-color: var(--fnt-line-strong);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.fnt-pill.is-active {
+    background: var(--fnt-surface-2);
+    border-color: transparent;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: var(--fnt-shadow-sm);
+}
+
+/* ---------- chips (badges over artwork) ---------- */
+.fnt-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: var(--fnt-r-pill);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(18, 18, 20, 0.68);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.fnt-chip-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* ---------- buttons ---------- */
+.fnt-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 24px;
+    border: 0;
+    border-radius: var(--fnt-r-md);
+    background: var(--fnt-accent);
+    color: #17140e;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.fnt-btn:hover {
+    background: var(--fnt-accent-hi);
+    transform: translateY(-1px);
+}
+
+.fnt-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 26px;
+    border: 1px solid var(--fnt-line-strong);
+    border-radius: var(--fnt-r-md);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--fnt-text-dim);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.fnt-btn-ghost:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.fnt-btn-crimson {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 26px;
+    border: 0;
+    border-radius: var(--fnt-r-md);
+    background: linear-gradient(180deg, #a32626 0%, #6f1717 100%);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: var(--fnt-shadow-sm);
+}
+
+/* ---------- see-more ---------- */
+.fnt-seemore-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 44px;
+}
+
+/* ---------- card grid ---------- */
+.fnt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 26px;
+}
+
+/* ---------- skeleton shimmer ---------- */
+@keyframes fnt-shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+}
+
+.fnt-skel {
+    background: linear-gradient(90deg, #242427 25%, #303035 37%, #242427 63%);
+    background-size: 800px 100%;
+    animation: fnt-shimmer 1.4s linear infinite;
+    border-radius: var(--fnt-r-md);
+}
+
+/* ---------- legacy helper kept for existing markup ---------- */
+.defaultStyle {
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .fnt-section-title {
+        font-size: 24px;
+    }
+
+    .container,
+    .container-fluid {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}

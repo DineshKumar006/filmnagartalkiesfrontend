@@ -1,163 +1,274 @@
-.Head{
-    /* border: 1px solid red; */
+/* Reviews — editorial hero (one lead + stacked features) above the review grid. */
+
+.Head {
+    min-height: 70vh;
+    padding-bottom: 72px;
 }
 
+/* ---------- hero ---------- */
+.ReviewHeaderElement {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 22px;
+    margin-bottom: 54px;
+}
 
-.ReviewHeaderElement{
-    /* border: 1px solid green; */
-    width: 100%;
-    height: 400px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* background-color: gray; */
+.imagehead1 {
+    position: relative;
+    min-height: 460px;
+    border-radius: var(--fnt-r-lg);
+    overflow: hidden;
+    background: var(--fnt-surface);
+    box-shadow: var(--fnt-shadow);
     cursor: pointer;
 }
 
-
-.ReviewHeaderElement .imagehead1,.ReviewHeaderElement .imagehead2{
-    /* border: 1px solid red; */
-    width: 50%;
-    height: 95%;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative
-
-
-    
-
-}
-
-.ReviewHeaderElement .imagehead1 p{
-    margin: 0;
-    padding: 0;
+.imagehead1 .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     position: absolute;
-    bottom: 0;
-    font-size: 25px;
-    color: white;
-    font-weight: bold;text-align: center;
-    background-color: black;
-    opacity: 0.7;
+    inset: 0;
+    transition: transform 0.7s ease;
 }
 
-.ReviewHeaderElement .imagehead1 img{
- width: 100%;
- height: 100%;
- border-radius: 10px;
-}
-/* .ReviewHeaderElement .imagehead1 img:hover, */
-.ReviewHeaderElement .imagehead1 img:hover,.ReviewHeaderElement .imagehead1 .para:hover .img{
-    /* background-color: red; */
-    transform: scale(1.1);
-    transition-duration: 1s;
-   }
-
-.ReviewHeaderElement .imagehead2{
-        /* border: 1px solid red; */
-
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
+.imagehead1:hover .img {
+    transform: scale(1.04);
 }
 
-.ReviewHeaderElement .imagehead2 div{
-    /* border: 1px solid red; */
-    width: 48%;
-    height:48%;
-    overflow: hidden;
-    border-radius: 10px;
-    position: relative;
-
-}
-
-.ReviewHeaderElement .imagehead2 div p{
-    margin: 0;
-    padding: 0;
+.imagehead1::after {
+    content: '';
     position: absolute;
-    bottom: 0;
+    inset: 0;
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.35) 0%,
+            rgba(0, 0, 0, 0.05) 30%,
+            rgba(0, 0, 0, 0.75) 72%,
+            rgba(0, 0, 0, 0.95) 100%);
+}
+
+.imagehead1::before {
+    content: 'Featured Review';
+    position: absolute;
+    top: 20px;
+    left: 22px;
+    z-index: 3;
+    padding: 6px 14px;
+    border-radius: var(--fnt-r-pill);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(18, 18, 20, 0.68);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #fff;
     font-size: 12px;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    background-color: black;
-    opacity: 0.8;
-
+    font-weight: 500;
 }
 
-
-.ReviewHeaderElement .imagehead2 div img{
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-}
-
-.ReviewHeaderElement .imagehead2 div img:hover{
-    transform: scale(1.1);
-    transition-duration: 1s;
-
-   }
-.eleHead{
-    /* border: 1px solid red; */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-}
-
-p{
+.para {
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    bottom: 28px;
+    z-index: 3;
     margin: 0;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.22;
+    letter-spacing: -0.5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
-.eleHeadinner{
-    /* border: 1px solid green; */
-    /* margin-top: ; */
-    width: 400px;
-    height: 300px;
-    margin-top: 5px;
-    
+
+.imagehead2 {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 22px;
 }
-.innercontent{
+
+/* only the first two features fit the rail */
+.imagehead2 > div:nth-child(n + 3) {
+    display: none;
+}
+
+.imagehead2 > div {
+    position: relative;
+    min-height: 219px;
+    border-radius: var(--fnt-r-lg);
+    overflow: hidden;
+    background: var(--fnt-surface);
+    box-shadow: var(--fnt-shadow-sm);
+    cursor: pointer;
+    transition: transform 0.28s ease;
+}
+
+.imagehead2 > div:hover {
+    transform: translateY(-4px);
+}
+
+.imagehead2 img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    object-fit: cover;
 }
-.innercontent .img{
-        /* border: 1px solid black; */
-box-shadow: 0px 0px 10px 0px black;
+
+.imagehead2 > div::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 30%, rgba(125, 29, 29, 0.55) 78%, rgba(90, 18, 18, 0.95) 100%);
+}
+
+.imagehead2 p {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 16px;
+    z-index: 3;
+    margin: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ---------- grid ---------- */
+.HeaderElement2 {
     width: 100%;
-    height: 80%;
 }
-.innercontent p{
-    background-color: black;
-    /* border: 1px solid red; */
-    color: white;
-    border-radius: 2px;
+
+.HeaderElement2_E1 {
     width: 100%;
-    height: 18%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-  
 }
 
-.HeaderElement2{
-    /* border: 1px solid; */
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+.eleHead {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 26px;
+    width: 100%;
 }
 
-.HeaderElement2 .HeaderElement2_E1{
-    /* border: 1px solid; */
-    width: 80%;
+.eleHeadinner {
+    width: 100%;
 }
 
-.HeaderElement2 .HeaderElement2_E2{
-    width: 20%;
-    background-color: pink;
+.innercontent {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    min-height: 300px;
+    border-radius: var(--fnt-r-lg);
+    overflow: hidden;
+    background: var(--fnt-surface);
+    box-shadow: var(--fnt-shadow-sm);
+    cursor: pointer;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.innercontent:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--fnt-shadow);
+}
+
+.innercontent .img {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.innercontent:hover .img {
+    transform: scale(1.06);
+}
+
+.innercontent::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.5) 0%,
+            rgba(0, 0, 0, 0.05) 32%,
+            rgba(0, 0, 0, 0.6) 68%,
+            rgba(0, 0, 0, 0.93) 100%);
+}
+
+.innercontent::before {
+    content: 'Review';
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    padding: 5px 12px;
+    border-radius: var(--fnt-r-pill);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(18, 18, 20, 0.68);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 500;
+}
+
+.innercontent p {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    z-index: 3;
+    margin: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.HeaderElement2_E2 {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .ReviewHeaderElement {
+        grid-template-columns: 1fr;
+    }
+
+    .imagehead1 {
+        min-height: 320px;
+    }
+
+    .para {
+        font-size: 22px;
+    }
+
+    .imagehead2 {
+        grid-template-rows: none;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .imagehead2 > div {
+        min-height: 170px;
+    }
+}
+
+@media (max-width: 560px) {
+    .eleHead {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 16px;
+    }
+
+    .innercontent {
+        min-height: 220px;
+    }
 }

@@ -1,5 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import Style from './newsStyle.module.css'
+import PageHeader from '../../UIElements/PageHeader/PageHeader'
+import ArticleIcon from '@material-ui/icons/Description'
 import {getLimitedGeneralnews} from '../controllers/FetchData/FetchData'
 
 
@@ -14,7 +16,7 @@ const  News =(props)=>  {
     const DefaultData=useSelector(state=>state.DefaultData)
 
     useEffect(()=>{
-        if(Object.keys(DefaultData.LimitedGeneralNewsData).length===0){
+        if(!Array.isArray(DefaultData.LimitedGeneralNewsData) || DefaultData.LimitedGeneralNewsData.length===0){
             setLoading(true)
             const FetchData=async()=>{
                 const  data=await getLimitedGeneralnews(1)
@@ -35,8 +37,16 @@ const  News =(props)=>  {
         return (
             <div className={`container ${Style.maincomponent}`}>
 
+            <PageHeader
+                title="General News"
+                parent="News"
+                subtitle="Headlines from across the industry"
+                icon={<ArticleIcon style={{ fontSize: 26 }} />}
+            />
+
+
             {
-             (Object.keys(DefaultData.LimitedGeneralNewsData).length!==0 && Loading==false)?
+             (Array.isArray(DefaultData.LimitedGeneralNewsData) && DefaultData.LimitedGeneralNewsData.length>0 && Loading===false)?
              <div className={Style.outerBox}>
                  {DefaultData.LimitedGeneralNewsData.map(ele=>{
                      return <div key={ele._id} className={Style.innerBox} onClick={()=>clickHandler(ele)}>

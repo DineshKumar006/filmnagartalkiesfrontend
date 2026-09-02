@@ -1,0 +1,24 @@
+.header {
+    width: 100%;
+}
+
+.crumbLink {
+    cursor: pointer;
+    color: var(--fnt-text-dim);
+    transition: color 0.2s ease;
+}
+
+.crumbMuted {
+    color: var(--fnt-text-dim);
+}
+
+.filterBtn {
+    min-width: 190px;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .filterBtn {
+        min-width: 130px;
+    }
+}

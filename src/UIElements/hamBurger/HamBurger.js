@@ -1,79 +1,95 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import MenuIcon from '@material-ui/icons/Menu'
+import CloseIcon from '@material-ui/icons/Close'
 import Style from './HamBurger.module.css'
-import MenuIcon from '@material-ui/icons/Menu';
-import {grey,red} from '@material-ui/core/colors'
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import CancelIcon from '@material-ui/icons/Cancel';
-import { NavLink } from 'react-router-dom';
 
-const HamBurger =()=> {
-
-    const [openMenu,setOpenMenu]=useState(false)
-
-    const menuHandler=()=>{
-        setOpenMenu(!openMenu)
+const SECTIONS = [
+    {
+        title: null,
+        items: [
+            { label: 'Home', to: '/' },
+            { label: 'Reviews', to: '/Reviews' },
+            { label: 'Interviews', to: '/Interviews' }
+        ]
+    },
+    {
+        title: 'News',
+        items: [
+            { label: 'General News', to: '/generalNews' },
+            { label: 'Film News', to: '/filmNews' }
+        ]
+    },
+    {
+        title: 'Latest Release',
+        items: [
+            { label: 'Teasers', to: '/Teasers' },
+            { label: 'Trailers', to: '/Trailers' },
+            { label: 'Songs', to: '/Songs' }
+        ]
+    },
+    {
+        title: 'Gallery',
+        items: [
+            { label: 'Photoshoots', to: '/Photoshoots' },
+            { label: 'Actors', to: '/Actors' },
+            { label: 'Actresses', to: '/Actresses' },
+            { label: 'Events', to: '/Events' },
+            { label: 'Working Stills', to: '/Workingstills' }
+        ]
     }
-        return (
-            <div className={Style.main}>
+]
 
-                <div className={Style.icons} onClick={menuHandler}>
-                    <MenuIcon style={{fontSize:40,color:grey[100]}}/>
-                </div>
+const HamBurger = () => {
 
-                {openMenu&&
-                
-                    <div className={Style.menuMain}>
+    const [openMenu, setOpenMenu] = useState(false)
 
-                        <div className={Style.closeicon} onClick={menuHandler}>
-                            <HighlightOffIcon  style={{fontSize:40,color:red[500]}}/>
+    const menuHandler = () => setOpenMenu(!openMenu)
+    const closeMenu = () => setOpenMenu(false)
+
+    return (
+        <div className={Style.main}>
+
+            <div className={Style.icons} onClick={menuHandler}>
+                <MenuIcon style={{ fontSize: 28 }} />
+            </div>
+
+            {openMenu && (
+                <>
+                    <div className={Style.scrim} onClick={closeMenu} />
+
+                    <div className={Style.drawer}>
+                        <div className={Style.drawerTop}>
+                            <span className={Style.drawerTitle}>Menu</span>
+                            <div className={Style.closeicon} onClick={closeMenu}>
+                                <CloseIcon style={{ fontSize: 24 }} />
+                            </div>
                         </div>
 
                         <div className={Style.navEle}>
-
-                        <div className={Style.innerNavEle}>
-                        <NavLink to='/' activeClassName={Style.active2} exact={true}> Home  </NavLink>
+                            {SECTIONS.map((section, i) => (
+                                <div className={Style.group} key={section.title || `group-${i}`}>
+                                    {section.title && <p className={Style.groupTitle}>{section.title}</p>}
+                                    {section.items.map(item => (
+                                        <div className={Style.innerNavEle} key={item.to}>
+                                            <NavLink
+                                                to={item.to}
+                                                exact={true}
+                                                activeClassName={Style.active2}
+                                                onClick={closeMenu}
+                                            >
+                                                {item.label}
+                                            </NavLink>
+                                        </div>
+                                    ))}
+                                </div>
+                            ))}
                         </div>
-
-                        <div className={Style.innerNavEle}>
-                        <p> News  </p>
-                        </div>
-
-                        <div className={Style.innerNavEle}>
-                        <NavLink to='/Reviews' exact={true} activeClassName={Style.active2}> Reviews  </NavLink>
-                        </div>
-
-
-                        <div className={Style.innerNavEle}>
-                        <NavLink to='/Interviews' exact={true} activeClassName={Style.active2}> Interviews  </NavLink>
-                        </div>
-
-
-                        <div className={Style.innerNavEle}>
-                        <p>Gallery</p>
-                        </div>
-
-                        <div className={Style.innerNavEle}>
-                        <p>Latest Release</p>
-                        </div>
-
-                        <div className={Style.innerNavEle}>
-                        <NavLink to='/About' exact={true} activeClassName={Style.active2}> About us  </NavLink>
-                        </div>
-       
-       
-
-
-
-
-
-                        </div>
-                    
                     </div>
-                }
-            </div>
-        )
-    
+                </>
+            )}
+        </div>
+    )
 }
-
 
 export default HamBurger

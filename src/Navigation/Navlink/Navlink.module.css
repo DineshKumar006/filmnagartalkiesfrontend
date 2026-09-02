@@ -1,248 +1,220 @@
-.Head{
+/* Top navigation — charcoal bar, links left, logo centred, search + actions right. */
 
-    min-height: 100px;
-    /* border: 2px solid olive; */
-    display: flex;
-    justify-content: space-between;
-
-    align-items: flex-end;
-    flex-direction: column;
+.navShell {
     width: 100%;
-    background-color: white;
+    height: var(--fnt-nav-h);
+    background: var(--fnt-nav);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
-.NavlinkHead{
-    /* border: 1px solid green; */
-    /* border-bottom: 1px solid gray; */
-    width: 100%;
+
+.navInner {
+    height: 100%;
     display: flex;
-    /* flex-direction: ; */
-    justify-content: space-between;
     align-items: center;
-    /* background-color: rgb(167, 166, 166); */
-    background-color: white;
-    height: 70px;
-    
-
+    justify-content: space-between;
+    gap: 20px;
 }
 
-.Mainlogo{
-    /* border: 1px solid red; */
-    box-sizing: border-box;
-    width: 65px;
-    height:50px;
+/* ---------- links ---------- */
+.links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex: 1 1 auto;
+    min-width: 0;
     overflow: hidden;
-    border-radius: 10px;
-    /* margin-top: 3px; */
-    
-
-
 }
-.Mainlogo img{
+
+.links a,
+.links .dropdown,
+.scrollLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    color: var(--fnt-text);
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
     cursor: pointer;
-    margin-top: 6px;
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.links a:hover,
+.links .dropdown:hover,
+.scrollLink:hover {
+    color: var(--fnt-accent);
+}
+
+.links a.active,
+.scrollLink.active {
+    color: var(--fnt-accent);
+    border-bottom-color: var(--fnt-accent);
+}
+
+/* ---------- dropdowns ---------- */
+.dropdown {
+    position: relative;
+}
+
+.dropdownPanel {
+    position: absolute;
+    top: 100%;
+    left: -14px;
+    padding-top: 16px;
+    display: none;
+    z-index: 40;
+}
+
+.dropdown:hover .dropdownPanel {
+    display: block;
+}
+
+/* ---------- logo ---------- */
+.logo {
+    flex: 0 0 auto;
+    width: 58px;
+    height: 46px;
+    overflow: hidden;
+    border-radius: var(--fnt-r-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #101015;
+}
+
+.logo img {
     width: 100%;
     height: 100%;
-    /* border: 1px solid green; */
-    transform: scale(1.6);
-    /* background-color: rgb(247, 247, 247); */
-    background-color:rgb(3, 3, 56);
-
-
-
+    object-fit: cover;
+    transform: scale(1.45);
 }
 
-.HamBurger{
-    display: none;
+/* ---------- right actions ---------- */
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    flex: 1 1 0;
+    min-width: 0;
 }
 
-.NavlinkHead a,.NavlinkHead span{
-    color: black;
-    letter-spacing: 1px;
-    font-family: RobotoCondensed-Bold;
+.search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 260px;
+    max-width: 100%;
+    height: 40px;
+    padding: 0 14px;
+    border: 1px solid var(--fnt-line-strong);
+    border-radius: var(--fnt-r-md);
+    background: rgba(0, 0, 0, 0.18);
+    transition: border-color 0.2s ease;
+}
 
+.search:focus-within {
+    border-color: var(--fnt-accent);
+}
 
+.searchIcon {
+    color: var(--fnt-text-mute);
+    flex: 0 0 auto;
+}
 
-    /* border: 1px solid red; */
-    min-width: 100px; 
-    text-decoration: none;
+.search input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: var(--fnt-text);
+    font-family: var(--fnt-font);
+    font-size: 14px;
+}
+
+.search input::placeholder {
+    color: var(--fnt-text-mute);
+    font-style: italic;
+}
+
+.actionLink {
+    color: var(--fnt-text);
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
     cursor: pointer;
+    transition: color 0.2s ease;
+}
 
+.actionLink:hover {
+    color: var(--fnt-accent);
+}
+
+.avatar {
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
-    padding: 1px 5px ;
-}
-
-.NavlinkHead .cinema{
-    position: relative;
-    /* border: 1px solid red; */
-}
-
-.NavlinkHead .cinema .cinemaOptions{
-    position: absolute;
-    top: 25px;
-    display: none;
-}
-
-.NavlinkHead .cinema:hover .cinemaOptions{
-    display: block;
-    z-index: 5;
-
-}
-
-
-
-
-.NavlinkHead .optionStyle{
-    position: relative;
-    /* border: 1px solid red; */
-    font-family: RobotoCondensed-Bold;
-}
-
-.NavlinkHead .optionStyle .inneroptionStyle{
-    /* border: 1px solid red; */
-    position: absolute;
-    top: 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    display: none;
-}
-
-.NavlinkHead .optionStyle:hover .inneroptionStyle{
-    display:block;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    z-index: 5;
-   /* padding-top: 10px; */
-/* border: 1px solid green; */
-/* background-color: white; */
-}
-.dropdonwArrow{
-/* border: 1px solid green;    */
-height: 22px;
-display: flex;
-justify-content: center;
-align-items: flex-start;
-width: 100%;
-margin:0;
-padding: 0;
-/* position: absolute;
-top: -10;
-z-index: 10
-     */
-}
-
-
-
-
-
-.NavlinkHead .gallary{
-    position: relative;
-    font-family: RobotoCondensed-Bold;
-
-    /* border: 1px solid red; */
-}
-
-.NavlinkHead .gallary .gallaryOptions{
-    position: absolute;
-    top: 25px;
-    display: none;
-}
-
-.NavlinkHead .gallary:hover .gallaryOptions{
-    display: block;
-    z-index: 5;
-
-}
-
-
-.NavlinkHead a.active{
-    border-radius: 5px;
-    background-color: rgb(253, 255, 108);
-  }
-/* .NavlinkHead a.active{
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px black;
-    color: green;
-
-
-}
-.NavlinkHead a{
-    border: 1px solid pink;
-}
-
-.NavlinkHead a:hover ,.NavlinkHead span:hover{
-    background-color: white;
-    border: 1px solid green;
-    border-radius: 5px;
-
-} */
-
-.navlinksElement{
-    border-bottom: 1px solid orangered;
-    width: 92%;
-    height: 50%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-@font-face{
-  
-    font-family: RobotoCondensed-Bold;
-    src: url(../../UIElements/Fonts/roboto-condensed/RobotoCondensed-Bold.ttf);
-}
-
-
-.searchBar{
-    /* border: 1px solid green; */
-    width: 30%;
-    height:40px;
-    /* display: flex;
     justify-content: center;
-    align-items: center; */
-    /* float: right; */
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: var(--fnt-text);
+    cursor: pointer;
+    transition: background 0.2s ease;
 }
 
-
-.searchBar input{
-border: none;
-width: 100%;
-height: 100%;
-/* border-radius: 20px; */
-/* padding: 0px 20px; */
-/* text-align: center; */
-outline: none;
-
-background-color: white;
-color: white;
-border-bottom: 1px solid orangered;
-/* box-shadow: 0px -1px 10px 0px black; */
-
+.avatar:hover {
+    background: rgba(255, 255, 255, 0.08);
 }
 
-.searchBar input:focus{
-    /* background-color: white; */
-    color: black;
+/* ---------- responsive ---------- */
+.burger {
+    display: none;
 }
 
-@media(max-width:920px){
-    .navlinksElement{
+@media (max-width: 1320px) {
+    .scrollLink {
         display: none;
     }
-    .searchBar{
-        width: 50%;
-        /* border: 1px solid red; */
-        float: right;
+}
+
+@media (max-width: 1200px) {
+    .actionLink {
+        display: none;
     }
 
-    .HamBurger{
-        display: block;
+    .links {
+        gap: 18px;
+        font-size: 14px;
+    }
+
+    .search {
+        width: 210px;
+    }
+}
+
+@media (max-width: 992px) {
+    .links {
+        display: none;
+    }
+
+    .burger {
+        display: flex;
+        align-items: center;
+        flex: 1 1 0;
+    }
+
+    .search {
+        width: 180px;
+    }
+}
+
+@media (max-width: 600px) {
+    .search {
+        display: none;
     }
 }

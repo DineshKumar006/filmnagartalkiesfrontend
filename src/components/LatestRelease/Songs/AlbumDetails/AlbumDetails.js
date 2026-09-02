@@ -7,6 +7,7 @@ import {addPhotoDetailsHandler} from '../../../../ReduxStore/Actions/DefaultActi
 import {addAlbumDetailsDataById} from '../../../../ReduxStore/Actions/DefaultActions'
 import Backdrop from '../../../../UIElements/backdrop/Backdrop'
 import Style from './Album.module.css'
+import { toEmbedUrl } from '../../../../UIElements/utils/youtube'
 const PhotoDetails =(props)=> {
     const defaultDetailsData=useSelector(state=>state.DefaultDetailsData)
     const dispatch=useDispatch();
@@ -68,22 +69,24 @@ const PhotoDetails =(props)=> {
                 {dataAvailable?
                 <div className={`${Style.mainContainer2} container`}>
                    
-                    { defaultDetailsData.AlbumDetailsData.youtubelinks.map(ele=>{
-                            return <div className={`${Style.video}`} key={ele._id}>
-                                            {/* <div className={Style.video}> */}
-                                        <iframe 
-                                        className={Style.videoEle}
-                                    
-                                        src={ele.url}
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                        allowFullScreen
-                                        name="my video"
-                                        loading="lazy"
-                                        />
-                                        {/* </div> */}
-                                </div>
-                        })
+                    {(Array.isArray(defaultDetailsData.AlbumDetailsData.youtubelinks)
+                        ? defaultDetailsData.AlbumDetailsData.youtubelinks
+                        : [])
+                        .filter(ele => toEmbedUrl(ele.url))
+                        .map(ele => (
+                            <div className={Style.video} key={ele._id}>
+                                <iframe
+                                    className={Style.videoEle}
+                                    title="Album video"
+                                    src={toEmbedUrl(ele.url)}
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    loading="lazy"
+                                />
+                                <button onClick={() => window.open(ele.url, "_blank")}>Watch on Youtube</button>
+                            </div>
+                        ))
                     }
                  </div>
                        

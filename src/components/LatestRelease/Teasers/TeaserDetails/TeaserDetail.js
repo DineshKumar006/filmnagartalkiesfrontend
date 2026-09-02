@@ -3,6 +3,7 @@ import Style from "./teaserDetail.module.css";
 import { TeasersDetail} from '../../../../ReduxStore/Actions/TeasersActions';
 import { fetchTeaserDataById } from '../../../controllers/FetchData/FetchData';
 import {useSelector,useDispatch} from 'react-redux'
+import { toEmbedUrl } from '../../../../UIElements/utils/youtube'
 
 const  TeaserDetail =(props)=> {
     const [loading,setLoading]=useState(false)
@@ -37,7 +38,7 @@ const  TeaserDetail =(props)=> {
                     {(Object.keys(TeaserDetailStateData).length!==0 && loading==false)&&
                            <div className={Style.leftheadInner}>
                                <div className={Style.innercontent}>
-                                <p className={Style.title}><span style={{color:"grey"}}>MovieName</span> :{TeaserDetailStateData.moviename}</p>
+                                <p className={Style.title}><span>Teaser</span>{TeaserDetailStateData.moviename}</p>
 
                                 <div className={Style.image}>
                                     <img src={TeaserDetailStateData.thumbnail}/>
@@ -45,19 +46,20 @@ const  TeaserDetail =(props)=> {
                              </div>
 
                               
-                              <div className={Style.video}>
-                                <iframe 
-                                width="780"
-                                height="400"
-                                src={TeaserDetailStateData.youtubelink}
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowFullScreen
-                                name="my video"
-                                loading="lazy"
-                                />
-                                <button onClick={()=>{}}>Watch on Youtube</button>
-                                </div>
+                              {toEmbedUrl(TeaserDetailStateData.youtubelink) && (
+                                  <div className={Style.video}>
+                                      <iframe
+                                          className={Style.videoEle}
+                                          title="Video player"
+                                          src={toEmbedUrl(TeaserDetailStateData.youtubelink)}
+                                          frameBorder="0"
+                                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                          allowFullScreen
+                                          loading="lazy"
+                                      />
+                                      <button onClick={() => window.open(TeaserDetailStateData.youtubelink, "_blank")}>Watch on Youtube</button>
+                                  </div>
+                              )}
                         
                             </div>                         
                     }

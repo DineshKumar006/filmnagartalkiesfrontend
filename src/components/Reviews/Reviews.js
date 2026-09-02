@@ -9,7 +9,8 @@ const Reviews = (props) => {
     const dispatch = useDispatch()
     const [reviewData, setReviewData] = useState([])
     let tt = 'Uppena Telugu Movie Review : Vaisshnav Tej Stars In This Love Story And A Tale Of Class Struggle'
-    let baseUrl = "https://filmnagartalkiesbackend.onrender.com"
+    // let baseUrl = "https://filmnagartalkiesbackend.onrender.com"
+    let baseUrl = "https://filmnagartalkiesbackend-3pqr.onrender.com"
 
     useEffect(() => {
 
